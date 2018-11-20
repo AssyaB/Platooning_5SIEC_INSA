@@ -29,20 +29,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label lblSpeed;
-            System.Windows.Forms.Label lBAT;
-            System.Windows.Forms.Label lPOS;
-            System.Windows.Forms.Label lSPL;
-            System.Windows.Forms.Label lSPR;
-            System.Windows.Forms.Label lUSFL;
-            System.Windows.Forms.Label lUSLC;
-            System.Windows.Forms.Label lUSFR;
-            System.Windows.Forms.Label lUSRR;
-            System.Windows.Forms.Label lUSRC;
-            System.Windows.Forms.Label lUSRL;
-            System.Windows.Forms.Label lROL;
-            System.Windows.Forms.Label lPITCH;
-            System.Windows.Forms.Label lYAW;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UIGeiCar));
+            this.lblSpeed = new System.Windows.Forms.Label();
+            this.lBAT = new System.Windows.Forms.Label();
+            this.lPOS = new System.Windows.Forms.Label();
+            this.lSPL = new System.Windows.Forms.Label();
+            this.lSPR = new System.Windows.Forms.Label();
+            this.lUSFL = new System.Windows.Forms.Label();
+            this.lUSLC = new System.Windows.Forms.Label();
+            this.lUSFR = new System.Windows.Forms.Label();
+            this.lUSRR = new System.Windows.Forms.Label();
+            this.lUSRC = new System.Windows.Forms.Label();
+            this.lUSRL = new System.Windows.Forms.Label();
+            this.lROL = new System.Windows.Forms.Label();
+            this.lPITCH = new System.Windows.Forms.Label();
+            this.lYAW = new System.Windows.Forms.Label();
             this.bconnect = new System.Windows.Forms.Button();
             this.ip = new System.Windows.Forms.TextBox();
             this.SpdBar = new System.Windows.Forms.TrackBar();
@@ -52,161 +53,153 @@
             this.bbackward = new System.Windows.Forms.Button();
             this.bstopSTE = new System.Windows.Forms.Button();
             this.bstopMOV = new System.Windows.Forms.Button();
-            this.eUSFL = new System.Windows.Forms.TextBox();
-            this.eUSFC = new System.Windows.Forms.TextBox();
-            this.eUSFR = new System.Windows.Forms.TextBox();
-            this.eUSRR = new System.Windows.Forms.TextBox();
-            this.eUSRC = new System.Windows.Forms.TextBox();
-            this.eUSRL = new System.Windows.Forms.TextBox();
-            this.eBAT = new System.Windows.Forms.TextBox();
-            this.eSPR = new System.Windows.Forms.TextBox();
-            this.eSPL = new System.Windows.Forms.TextBox();
-            this.ePOS = new System.Windows.Forms.TextBox();
-            this.eROL = new System.Windows.Forms.TextBox();
-            this.ePITCH = new System.Windows.Forms.TextBox();
-            this.eYAW = new System.Windows.Forms.TextBox();
-            lblSpeed = new System.Windows.Forms.Label();
-            lBAT = new System.Windows.Forms.Label();
-            lPOS = new System.Windows.Forms.Label();
-            lSPL = new System.Windows.Forms.Label();
-            lSPR = new System.Windows.Forms.Label();
-            lUSFL = new System.Windows.Forms.Label();
-            lUSLC = new System.Windows.Forms.Label();
-            lUSFR = new System.Windows.Forms.Label();
-            lUSRR = new System.Windows.Forms.Label();
-            lUSRC = new System.Windows.Forms.Label();
-            lUSRL = new System.Windows.Forms.Label();
-            lROL = new System.Windows.Forms.Label();
-            lPITCH = new System.Windows.Forms.Label();
-            lYAW = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.eBAT = new System.Windows.Forms.Label();
+            this.ePOS = new System.Windows.Forms.Label();
+            this.eSPL = new System.Windows.Forms.Label();
+            this.eSPR = new System.Windows.Forms.Label();
+            this.eYAW = new System.Windows.Forms.Label();
+            this.ePITCH = new System.Windows.Forms.Label();
+            this.eROL = new System.Windows.Forms.Label();
+            this.eUSFR = new System.Windows.Forms.Label();
+            this.infoLayout = new System.Windows.Forms.Panel();
+            this.eUSRR = new System.Windows.Forms.Label();
+            this.eUSRC = new System.Windows.Forms.Label();
+            this.eUSRL = new System.Windows.Forms.Label();
+            this.eUSFC = new System.Windows.Forms.Label();
+            this.eUSFL = new System.Windows.Forms.Label();
+            this.eSPD = new System.Windows.Forms.Label();
+            this.kbCtrl = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SpdBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.infoLayout.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSpeed
             // 
-            lblSpeed.AutoSize = true;
-            lblSpeed.Location = new System.Drawing.Point(426, 7);
-            lblSpeed.Name = "lblSpeed";
-            lblSpeed.Size = new System.Drawing.Size(38, 13);
-            lblSpeed.TabIndex = 9;
-            lblSpeed.Text = "Speed";
+            this.lblSpeed.AutoSize = true;
+            this.lblSpeed.Location = new System.Drawing.Point(429, 28);
+            this.lblSpeed.Name = "lblSpeed";
+            this.lblSpeed.Size = new System.Drawing.Size(38, 13);
+            this.lblSpeed.TabIndex = 9;
+            this.lblSpeed.Text = "Speed";
             // 
             // lBAT
             // 
-            lBAT.AutoSize = true;
-            lBAT.Location = new System.Drawing.Point(10, 59);
-            lBAT.Name = "lBAT";
-            lBAT.Size = new System.Drawing.Size(28, 13);
-            lBAT.TabIndex = 10;
-            lBAT.Text = "BAT";
+            this.lBAT.AutoSize = true;
+            this.lBAT.Location = new System.Drawing.Point(25, 66);
+            this.lBAT.Name = "lBAT";
+            this.lBAT.Size = new System.Drawing.Size(28, 13);
+            this.lBAT.TabIndex = 10;
+            this.lBAT.Text = "BAT";
             // 
             // lPOS
             // 
-            lPOS.AutoSize = true;
-            lPOS.Location = new System.Drawing.Point(10, 85);
-            lPOS.Name = "lPOS";
-            lPOS.Size = new System.Drawing.Size(29, 13);
-            lPOS.TabIndex = 12;
-            lPOS.Text = "POS";
+            this.lPOS.AutoSize = true;
+            this.lPOS.Location = new System.Drawing.Point(25, 79);
+            this.lPOS.Name = "lPOS";
+            this.lPOS.Size = new System.Drawing.Size(29, 13);
+            this.lPOS.TabIndex = 12;
+            this.lPOS.Text = "POS";
             // 
             // lSPL
             // 
-            lSPL.AutoSize = true;
-            lSPL.Location = new System.Drawing.Point(10, 111);
-            lSPL.Name = "lSPL";
-            lSPL.Size = new System.Drawing.Size(27, 13);
-            lSPL.TabIndex = 14;
-            lSPL.Text = "SPL";
+            this.lSPL.AutoSize = true;
+            this.lSPL.Location = new System.Drawing.Point(25, 92);
+            this.lSPL.Name = "lSPL";
+            this.lSPL.Size = new System.Drawing.Size(27, 13);
+            this.lSPL.TabIndex = 14;
+            this.lSPL.Text = "SPL";
             // 
             // lSPR
             // 
-            lSPR.AutoSize = true;
-            lSPR.Location = new System.Drawing.Point(10, 137);
-            lSPR.Name = "lSPR";
-            lSPR.Size = new System.Drawing.Size(29, 13);
-            lSPR.TabIndex = 16;
-            lSPR.Text = "SPR";
+            this.lSPR.AutoSize = true;
+            this.lSPR.Location = new System.Drawing.Point(25, 105);
+            this.lSPR.Name = "lSPR";
+            this.lSPR.Size = new System.Drawing.Size(29, 13);
+            this.lSPR.TabIndex = 16;
+            this.lSPR.Text = "SPR";
             // 
             // lUSFL
             // 
-            lUSFL.AutoSize = true;
-            lUSFL.Location = new System.Drawing.Point(140, 66);
-            lUSFL.Name = "lUSFL";
-            lUSFL.Size = new System.Drawing.Size(37, 13);
-            lUSFL.TabIndex = 22;
-            lUSFL.Text = "US FL";
+            this.lUSFL.AutoSize = true;
+            this.lUSFL.Location = new System.Drawing.Point(121, 95);
+            this.lUSFL.Name = "lUSFL";
+            this.lUSFL.Size = new System.Drawing.Size(37, 13);
+            this.lUSFL.TabIndex = 22;
+            this.lUSFL.Text = "US FL";
             // 
             // lUSLC
             // 
-            lUSLC.AutoSize = true;
-            lUSLC.Location = new System.Drawing.Point(196, 66);
-            lUSLC.Name = "lUSLC";
-            lUSLC.Size = new System.Drawing.Size(38, 13);
-            lUSLC.TabIndex = 24;
-            lUSLC.Text = "US FC";
+            this.lUSLC.AutoSize = true;
+            this.lUSLC.Location = new System.Drawing.Point(170, 66);
+            this.lUSLC.Name = "lUSLC";
+            this.lUSLC.Size = new System.Drawing.Size(38, 13);
+            this.lUSLC.TabIndex = 24;
+            this.lUSLC.Text = "US FC";
             // 
             // lUSFR
             // 
-            lUSFR.AutoSize = true;
-            lUSFR.Location = new System.Drawing.Point(251, 66);
-            lUSFR.Name = "lUSFR";
-            lUSFR.Size = new System.Drawing.Size(39, 13);
-            lUSFR.TabIndex = 26;
-            lUSFR.Text = "US FR";
+            this.lUSFR.AutoSize = true;
+            this.lUSFR.Location = new System.Drawing.Point(206, 44);
+            this.lUSFR.Name = "lUSFR";
+            this.lUSFR.Size = new System.Drawing.Size(39, 13);
+            this.lUSFR.TabIndex = 26;
+            this.lUSFR.Text = "US FR";
             // 
             // lUSRR
             // 
-            lUSRR.AutoSize = true;
-            lUSRR.Location = new System.Drawing.Point(251, 131);
-            lUSRR.Name = "lUSRR";
-            lUSRR.Size = new System.Drawing.Size(41, 13);
-            lUSRR.TabIndex = 28;
-            lUSRR.Text = "US RR";
+            this.lUSRR.AutoSize = true;
+            this.lUSRR.Location = new System.Drawing.Point(224, 181);
+            this.lUSRR.Name = "lUSRR";
+            this.lUSRR.Size = new System.Drawing.Size(41, 13);
+            this.lUSRR.TabIndex = 28;
+            this.lUSRR.Text = "US RR";
             // 
             // lUSRC
             // 
-            lUSRC.AutoSize = true;
-            lUSRC.Location = new System.Drawing.Point(195, 131);
-            lUSRC.Name = "lUSRC";
-            lUSRC.Size = new System.Drawing.Size(40, 13);
-            lUSRC.TabIndex = 30;
-            lUSRC.Text = "US RC";
+            this.lUSRC.AutoSize = true;
+            this.lUSRC.Location = new System.Drawing.Point(170, 207);
+            this.lUSRC.Name = "lUSRC";
+            this.lUSRC.Size = new System.Drawing.Size(40, 13);
+            this.lUSRC.TabIndex = 30;
+            this.lUSRC.Text = "US RC";
             // 
             // lUSRL
             // 
-            lUSRL.AutoSize = true;
-            lUSRL.Location = new System.Drawing.Point(138, 131);
-            lUSRL.Name = "lUSRL";
-            lUSRL.Size = new System.Drawing.Size(39, 13);
-            lUSRL.TabIndex = 32;
-            lUSRL.Text = "US RL";
+            this.lUSRL.AutoSize = true;
+            this.lUSRL.Location = new System.Drawing.Point(119, 181);
+            this.lUSRL.Name = "lUSRL";
+            this.lUSRL.Size = new System.Drawing.Size(39, 13);
+            this.lUSRL.TabIndex = 32;
+            this.lUSRL.Text = "US RL";
             // 
             // lROL
             // 
-            lROL.AutoSize = true;
-            lROL.Location = new System.Drawing.Point(257, 154);
-            lROL.Name = "lROL";
-            lROL.Size = new System.Drawing.Size(29, 13);
-            lROL.TabIndex = 42;
-            lROL.Text = "ROL";
+            this.lROL.AutoSize = true;
+            this.lROL.Location = new System.Drawing.Point(25, 184);
+            this.lROL.Name = "lROL";
+            this.lROL.Size = new System.Drawing.Size(29, 13);
+            this.lROL.TabIndex = 42;
+            this.lROL.Text = "ROL";
             // 
             // lPITCH
             // 
-            lPITCH.AutoSize = true;
-            lPITCH.Location = new System.Drawing.Point(196, 154);
-            lPITCH.Name = "lPITCH";
-            lPITCH.Size = new System.Drawing.Size(39, 13);
-            lPITCH.TabIndex = 40;
-            lPITCH.Text = "PITCH";
+            this.lPITCH.AutoSize = true;
+            this.lPITCH.Location = new System.Drawing.Point(25, 158);
+            this.lPITCH.Name = "lPITCH";
+            this.lPITCH.Size = new System.Drawing.Size(39, 13);
+            this.lPITCH.TabIndex = 40;
+            this.lPITCH.Text = "PITCH";
             // 
             // lYAW
             // 
-            lYAW.AutoSize = true;
-            lYAW.Location = new System.Drawing.Point(142, 154);
-            lYAW.Name = "lYAW";
-            lYAW.Size = new System.Drawing.Size(32, 13);
-            lYAW.TabIndex = 38;
-            lYAW.Text = "YAW";
+            this.lYAW.AutoSize = true;
+            this.lYAW.Location = new System.Drawing.Point(25, 132);
+            this.lYAW.Name = "lYAW";
+            this.lYAW.Size = new System.Drawing.Size(32, 13);
+            this.lYAW.TabIndex = 38;
+            this.lYAW.Text = "YAW";
             // 
             // bconnect
             // 
@@ -216,7 +209,7 @@
             this.bconnect.TabIndex = 0;
             this.bconnect.Text = "Connect";
             this.bconnect.UseVisualStyleBackColor = true;
-            this.bconnect.Click += new System.EventHandler(this.bconnect_Click);
+            this.bconnect.Click += new System.EventHandler(this.Bconnect_Click);
             // 
             // ip
             // 
@@ -228,8 +221,8 @@
             // SpdBar
             // 
             this.SpdBar.Enabled = false;
-            this.SpdBar.Location = new System.Drawing.Point(392, 23);
-            this.SpdBar.Maximum = 20;
+            this.SpdBar.Location = new System.Drawing.Point(395, 44);
+            this.SpdBar.Maximum = 50;
             this.SpdBar.Name = "SpdBar";
             this.SpdBar.Size = new System.Drawing.Size(104, 45);
             this.SpdBar.TabIndex = 2;
@@ -245,7 +238,7 @@
             this.bforward.TabIndex = 3;
             this.bforward.Text = "Forward";
             this.bforward.UseVisualStyleBackColor = true;
-            this.bforward.Click += new System.EventHandler(this.bforward_Click);
+            this.bforward.Click += new System.EventHandler(this.Bforward_Click);
             // 
             // bright
             // 
@@ -256,7 +249,7 @@
             this.bright.TabIndex = 4;
             this.bright.Text = "Right";
             this.bright.UseVisualStyleBackColor = true;
-            this.bright.Click += new System.EventHandler(this.bright_Click);
+            this.bright.Click += new System.EventHandler(this.Bright_Click);
             // 
             // bleft
             // 
@@ -267,7 +260,7 @@
             this.bleft.TabIndex = 5;
             this.bleft.Text = "Left";
             this.bleft.UseVisualStyleBackColor = true;
-            this.bleft.Click += new System.EventHandler(this.bleft_Click);
+            this.bleft.Click += new System.EventHandler(this.Bleft_Click);
             // 
             // bbackward
             // 
@@ -278,7 +271,7 @@
             this.bbackward.TabIndex = 6;
             this.bbackward.Text = "Backward";
             this.bbackward.UseVisualStyleBackColor = true;
-            this.bbackward.Click += new System.EventHandler(this.bbackward_Click);
+            this.bbackward.Click += new System.EventHandler(this.Bbackward_Click);
             // 
             // bstopSTE
             // 
@@ -289,7 +282,7 @@
             this.bstopSTE.TabIndex = 7;
             this.bstopSTE.Text = "Stop Rot.";
             this.bstopSTE.UseVisualStyleBackColor = true;
-            this.bstopSTE.Click += new System.EventHandler(this.bstopSTE_Click);
+            this.bstopSTE.Click += new System.EventHandler(this.BstopSTE_Click);
             // 
             // bstopMOV
             // 
@@ -300,144 +293,197 @@
             this.bstopMOV.TabIndex = 8;
             this.bstopMOV.Text = "Stop Mov.";
             this.bstopMOV.UseVisualStyleBackColor = true;
-            this.bstopMOV.Click += new System.EventHandler(this.bstopMOV_Click);
+            this.bstopMOV.Click += new System.EventHandler(this.BstopMOV_Click);
             // 
-            // eUSFL
+            // pictureBox1
             // 
-            this.eUSFL.Enabled = false;
-            this.eUSFL.Location = new System.Drawing.Point(132, 82);
-            this.eUSFL.Name = "eUSFL";
-            this.eUSFL.Size = new System.Drawing.Size(51, 20);
-            this.eUSFL.TabIndex = 23;
-            // 
-            // eUSFC
-            // 
-            this.eUSFC.Enabled = false;
-            this.eUSFC.Location = new System.Drawing.Point(189, 82);
-            this.eUSFC.Name = "eUSFC";
-            this.eUSFC.Size = new System.Drawing.Size(51, 20);
-            this.eUSFC.TabIndex = 25;
-            // 
-            // eUSFR
-            // 
-            this.eUSFR.Enabled = false;
-            this.eUSFR.Location = new System.Drawing.Point(246, 82);
-            this.eUSFR.Name = "eUSFR";
-            this.eUSFR.Size = new System.Drawing.Size(51, 20);
-            this.eUSFR.TabIndex = 27;
-            // 
-            // eUSRR
-            // 
-            this.eUSRR.Enabled = false;
-            this.eUSRR.Location = new System.Drawing.Point(246, 108);
-            this.eUSRR.Name = "eUSRR";
-            this.eUSRR.Size = new System.Drawing.Size(51, 20);
-            this.eUSRR.TabIndex = 29;
-            // 
-            // eUSRC
-            // 
-            this.eUSRC.Enabled = false;
-            this.eUSRC.Location = new System.Drawing.Point(189, 108);
-            this.eUSRC.Name = "eUSRC";
-            this.eUSRC.Size = new System.Drawing.Size(51, 20);
-            this.eUSRC.TabIndex = 31;
-            // 
-            // eUSRL
-            // 
-            this.eUSRL.Enabled = false;
-            this.eUSRL.Location = new System.Drawing.Point(132, 108);
-            this.eUSRL.Name = "eUSRL";
-            this.eUSRL.Size = new System.Drawing.Size(51, 20);
-            this.eUSRL.TabIndex = 33;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(164, 95);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(54, 99);
+            this.pictureBox1.TabIndex = 44;
+            this.pictureBox1.TabStop = false;
             // 
             // eBAT
             // 
-            this.eBAT.Enabled = false;
-            this.eBAT.Location = new System.Drawing.Point(44, 56);
+            this.eBAT.AutoSize = true;
+            this.eBAT.Location = new System.Drawing.Point(59, 66);
             this.eBAT.Name = "eBAT";
-            this.eBAT.Size = new System.Drawing.Size(51, 20);
-            this.eBAT.TabIndex = 34;
-            // 
-            // eSPR
-            // 
-            this.eSPR.Enabled = false;
-            this.eSPR.Location = new System.Drawing.Point(44, 134);
-            this.eSPR.Name = "eSPR";
-            this.eSPR.Size = new System.Drawing.Size(51, 20);
-            this.eSPR.TabIndex = 35;
-            // 
-            // eSPL
-            // 
-            this.eSPL.Enabled = false;
-            this.eSPL.Location = new System.Drawing.Point(44, 108);
-            this.eSPL.Name = "eSPL";
-            this.eSPL.Size = new System.Drawing.Size(51, 20);
-            this.eSPL.TabIndex = 36;
+            this.eBAT.Size = new System.Drawing.Size(13, 13);
+            this.eBAT.TabIndex = 45;
+            this.eBAT.Text = "0";
             // 
             // ePOS
             // 
-            this.ePOS.Enabled = false;
-            this.ePOS.Location = new System.Drawing.Point(44, 82);
+            this.ePOS.AutoSize = true;
+            this.ePOS.Location = new System.Drawing.Point(59, 79);
             this.ePOS.Name = "ePOS";
-            this.ePOS.Size = new System.Drawing.Size(51, 20);
-            this.ePOS.TabIndex = 37;
+            this.ePOS.Size = new System.Drawing.Size(13, 13);
+            this.ePOS.TabIndex = 46;
+            this.ePOS.Text = "0";
             // 
-            // eROL
+            // eSPL
             // 
-            this.eROL.Enabled = false;
-            this.eROL.Location = new System.Drawing.Point(246, 170);
-            this.eROL.Name = "eROL";
-            this.eROL.Size = new System.Drawing.Size(51, 20);
-            this.eROL.TabIndex = 43;
+            this.eSPL.AutoSize = true;
+            this.eSPL.Location = new System.Drawing.Point(59, 92);
+            this.eSPL.Name = "eSPL";
+            this.eSPL.Size = new System.Drawing.Size(13, 13);
+            this.eSPL.TabIndex = 47;
+            this.eSPL.Text = "0";
             // 
-            // ePITCH
+            // eSPR
             // 
-            this.ePITCH.Enabled = false;
-            this.ePITCH.Location = new System.Drawing.Point(189, 170);
-            this.ePITCH.Name = "ePITCH";
-            this.ePITCH.Size = new System.Drawing.Size(51, 20);
-            this.ePITCH.TabIndex = 41;
+            this.eSPR.AutoSize = true;
+            this.eSPR.Location = new System.Drawing.Point(59, 105);
+            this.eSPR.Name = "eSPR";
+            this.eSPR.Size = new System.Drawing.Size(13, 13);
+            this.eSPR.TabIndex = 48;
+            this.eSPR.Text = "0";
             // 
             // eYAW
             // 
-            this.eYAW.Enabled = false;
-            this.eYAW.Location = new System.Drawing.Point(132, 170);
+            this.eYAW.AutoSize = true;
+            this.eYAW.Location = new System.Drawing.Point(35, 145);
             this.eYAW.Name = "eYAW";
-            this.eYAW.Size = new System.Drawing.Size(51, 20);
-            this.eYAW.TabIndex = 39;
+            this.eYAW.Size = new System.Drawing.Size(13, 13);
+            this.eYAW.TabIndex = 49;
+            this.eYAW.Text = "0";
+            // 
+            // ePITCH
+            // 
+            this.ePITCH.AutoSize = true;
+            this.ePITCH.Location = new System.Drawing.Point(35, 171);
+            this.ePITCH.Name = "ePITCH";
+            this.ePITCH.Size = new System.Drawing.Size(13, 13);
+            this.ePITCH.TabIndex = 50;
+            this.ePITCH.Text = "0";
+            // 
+            // eROL
+            // 
+            this.eROL.AutoSize = true;
+            this.eROL.Location = new System.Drawing.Point(35, 197);
+            this.eROL.Name = "eROL";
+            this.eROL.Size = new System.Drawing.Size(13, 13);
+            this.eROL.TabIndex = 51;
+            this.eROL.Text = "0";
+            // 
+            // eUSFR
+            // 
+            this.eUSFR.AutoSize = true;
+            this.eUSFR.Location = new System.Drawing.Point(224, 79);
+            this.eUSFR.Name = "eUSFR";
+            this.eUSFR.Size = new System.Drawing.Size(13, 13);
+            this.eUSFR.TabIndex = 52;
+            this.eUSFR.Text = "0";
+            // 
+            // infoLayout
+            // 
+            this.infoLayout.Controls.Add(this.lUSFR);
+            this.infoLayout.Location = new System.Drawing.Point(18, 51);
+            this.infoLayout.Name = "infoLayout";
+            this.infoLayout.Size = new System.Drawing.Size(253, 180);
+            this.infoLayout.TabIndex = 58;
+            // 
+            // eUSRR
+            // 
+            this.eUSRR.AutoSize = true;
+            this.eUSRR.Location = new System.Drawing.Point(224, 194);
+            this.eUSRR.Name = "eUSRR";
+            this.eUSRR.Size = new System.Drawing.Size(13, 13);
+            this.eUSRR.TabIndex = 53;
+            this.eUSRR.Text = "0";
+            // 
+            // eUSRC
+            // 
+            this.eUSRC.AutoSize = true;
+            this.eUSRC.Location = new System.Drawing.Point(184, 194);
+            this.eUSRC.Name = "eUSRC";
+            this.eUSRC.Size = new System.Drawing.Size(13, 13);
+            this.eUSRC.TabIndex = 54;
+            this.eUSRC.Text = "0";
+            // 
+            // eUSRL
+            // 
+            this.eUSRL.AutoSize = true;
+            this.eUSRL.Location = new System.Drawing.Point(145, 194);
+            this.eUSRL.Name = "eUSRL";
+            this.eUSRL.Size = new System.Drawing.Size(13, 13);
+            this.eUSRL.TabIndex = 55;
+            this.eUSRL.Text = "0";
+            // 
+            // eUSFC
+            // 
+            this.eUSFC.AutoSize = true;
+            this.eUSFC.Location = new System.Drawing.Point(184, 79);
+            this.eUSFC.Name = "eUSFC";
+            this.eUSFC.Size = new System.Drawing.Size(13, 13);
+            this.eUSFC.TabIndex = 56;
+            this.eUSFC.Text = "0";
+            // 
+            // eUSFL
+            // 
+            this.eUSFL.AutoSize = true;
+            this.eUSFL.Location = new System.Drawing.Point(145, 79);
+            this.eUSFL.Name = "eUSFL";
+            this.eUSFL.Size = new System.Drawing.Size(13, 13);
+            this.eUSFL.TabIndex = 57;
+            this.eUSFL.Text = "0";
+            // 
+            // eSPD
+            // 
+            this.eSPD.AutoSize = true;
+            this.eSPD.Location = new System.Drawing.Point(473, 28);
+            this.eSPD.Name = "eSPD";
+            this.eSPD.Size = new System.Drawing.Size(19, 13);
+            this.eSPD.TabIndex = 59;
+            this.eSPD.Text = "10";
+            // 
+            // kbCtrl
+            // 
+            this.kbCtrl.Location = new System.Drawing.Point(387, 197);
+            this.kbCtrl.Name = "kbCtrl";
+            this.kbCtrl.Size = new System.Drawing.Size(112, 23);
+            this.kbCtrl.TabIndex = 60;
+            this.kbCtrl.Text = "KeyBoard Control";
+            this.kbCtrl.UseVisualStyleBackColor = true;
+            this.kbCtrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyDown);
+            this.kbCtrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyUp);
+            this.kbCtrl.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.KbCtrl_PreviewKeyDown);
             // 
             // UIGeiCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 213);
-            this.Controls.Add(this.eROL);
-            this.Controls.Add(lROL);
-            this.Controls.Add(this.ePITCH);
-            this.Controls.Add(lPITCH);
-            this.Controls.Add(this.eYAW);
-            this.Controls.Add(lYAW);
-            this.Controls.Add(this.ePOS);
-            this.Controls.Add(this.eSPL);
-            this.Controls.Add(this.eSPR);
-            this.Controls.Add(this.eBAT);
-            this.Controls.Add(this.eUSRL);
-            this.Controls.Add(lUSRL);
-            this.Controls.Add(this.eUSRC);
-            this.Controls.Add(lUSRC);
-            this.Controls.Add(this.eUSRR);
-            this.Controls.Add(lUSRR);
-            this.Controls.Add(this.eUSFR);
-            this.Controls.Add(lUSFR);
-            this.Controls.Add(this.eUSFC);
-            this.Controls.Add(lUSLC);
+            this.ClientSize = new System.Drawing.Size(578, 353);
+            this.Controls.Add(this.kbCtrl);
+            this.Controls.Add(this.eSPD);
             this.Controls.Add(this.eUSFL);
-            this.Controls.Add(lUSFL);
-            this.Controls.Add(lSPR);
-            this.Controls.Add(lSPL);
-            this.Controls.Add(lPOS);
-            this.Controls.Add(lBAT);
-            this.Controls.Add(lblSpeed);
+            this.Controls.Add(this.eUSFC);
+            this.Controls.Add(this.eUSRL);
+            this.Controls.Add(this.eUSRC);
+            this.Controls.Add(this.eUSRR);
+            this.Controls.Add(this.eUSFR);
+            this.Controls.Add(this.eROL);
+            this.Controls.Add(this.ePITCH);
+            this.Controls.Add(this.eYAW);
+            this.Controls.Add(this.eSPR);
+            this.Controls.Add(this.eSPL);
+            this.Controls.Add(this.ePOS);
+            this.Controls.Add(this.eBAT);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lROL);
+            this.Controls.Add(this.lPITCH);
+            this.Controls.Add(this.lYAW);
+            this.Controls.Add(this.lUSRL);
+            this.Controls.Add(this.lUSRC);
+            this.Controls.Add(this.lUSRR);
+            this.Controls.Add(this.lUSLC);
+            this.Controls.Add(this.lUSFL);
+            this.Controls.Add(this.lSPR);
+            this.Controls.Add(this.lSPL);
+            this.Controls.Add(this.lPOS);
+            this.Controls.Add(this.lBAT);
+            this.Controls.Add(this.lblSpeed);
             this.Controls.Add(this.bstopMOV);
             this.Controls.Add(this.bstopSTE);
             this.Controls.Add(this.bbackward);
@@ -447,13 +493,17 @@
             this.Controls.Add(this.SpdBar);
             this.Controls.Add(this.ip);
             this.Controls.Add(this.bconnect);
+            this.Controls.Add(this.infoLayout);
+            this.KeyPreview = true;
             this.Name = "UIGeiCar";
             this.Text = "GeiCar";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UIGeiCar_FormClosing);
-            this.Load += new System.EventHandler(this.UIGeiCar_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.SpdBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.infoLayout.ResumeLayout(false);
+            this.infoLayout.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -470,20 +520,37 @@
         private System.Windows.Forms.Button bbackward;
         private System.Windows.Forms.Button bstopSTE;
         private System.Windows.Forms.Button bstopMOV;
-        private System.Windows.Forms.TextBox eUSFL;
-        private System.Windows.Forms.TextBox eUSFC;
-        private System.Windows.Forms.TextBox eUSFR;
-        private System.Windows.Forms.TextBox eUSRR;
-        private System.Windows.Forms.TextBox eUSRC;
-        private System.Windows.Forms.TextBox eUSRL;
-        private System.Windows.Forms.TextBox eBAT;
-        private System.Windows.Forms.TextBox eSPR;
-        private System.Windows.Forms.TextBox eSPL;
-        private System.Windows.Forms.TextBox ePOS;
-        private System.Windows.Forms.TextBox eROL;
-        private System.Windows.Forms.TextBox ePITCH;
-        private System.Windows.Forms.TextBox eYAW;
-
+        private System.Windows.Forms.Label lblSpeed;
+        private System.Windows.Forms.Label lBAT;
+        private System.Windows.Forms.Label lPOS;
+        private System.Windows.Forms.Label lSPL;
+        private System.Windows.Forms.Label lSPR;
+        private System.Windows.Forms.Label lUSFL;
+        private System.Windows.Forms.Label lUSLC;
+        private System.Windows.Forms.Label lUSFR;
+        private System.Windows.Forms.Label lUSRR;
+        private System.Windows.Forms.Label lUSRC;
+        private System.Windows.Forms.Label lUSRL;
+        private System.Windows.Forms.Label lROL;
+        private System.Windows.Forms.Label lPITCH;
+        private System.Windows.Forms.Label lYAW;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label eBAT;
+        private System.Windows.Forms.Label ePOS;
+        private System.Windows.Forms.Label eSPL;
+        private System.Windows.Forms.Label eSPR;
+        private System.Windows.Forms.Label eYAW;
+        private System.Windows.Forms.Label ePITCH;
+        private System.Windows.Forms.Label eROL;
+        private System.Windows.Forms.Label eUSFR;
+        private System.Windows.Forms.Label eUSRR;
+        private System.Windows.Forms.Label eUSRC;
+        private System.Windows.Forms.Label eUSRL;
+        private System.Windows.Forms.Label eUSFC;
+        private System.Windows.Forms.Label eUSFL;
+        private System.Windows.Forms.Panel infoLayout;
+        private System.Windows.Forms.Label eSPD;
+        private System.Windows.Forms.Button kbCtrl;
     }
 }
 

@@ -15,18 +15,15 @@ namespace UIGeiCar___Nairobi
     {
         TcpClient clientSocket = new TcpClient();
         NetworkStream nwStream;
+        Boolean bConnected = false;
 
         public UIGeiCar()
         {
             InitializeComponent();
         }
+        
 
-        private void UIGeiCar_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bconnect_Click(object sender, EventArgs e)
+        private void Bconnect_Click(object sender, EventArgs e)
         {
             try
             {
@@ -34,18 +31,20 @@ namespace UIGeiCar___Nairobi
                 bconnect.Text = "Connected";
                 bconnect.Enabled = false;
                 nwStream = clientSocket.GetStream();
-                enableAll();
+                bConnected = true;
+                EnableAll();
                 ip.Enabled = false;
                 Receive();
             }
             catch (SocketException ex)
             {
+                bConnected = false;
                 bconnect.Text = "Failed to connect";
                 Console.WriteLine(ex.Message);
             }
         }
 
-        private void enableAll()
+        private void EnableAll()
         {
             bforward.Enabled = true;
             bright.Enabled = true;
@@ -59,67 +58,21 @@ namespace UIGeiCar___Nairobi
         async void Receive()
         {
             int cmpt = 0;
-            while (clientSocket.Connected)
-            {
-                byte[] myReadBuffer = new byte[2048];
-                await nwStream.ReadAsync(myReadBuffer, 0, myReadBuffer.Length);
-                String st = Encoding.UTF8.GetString(myReadBuffer);
-                String[] msgs = st.Split(';');
-
-                foreach (String msg in msgs)
+            if (bConnected) { 
+                while (clientSocket.Connected)
                 {
-                    Console.WriteLine(msg);
-                    String[] elt = msg.Split(':');
-                    switch (elt[0])
+                    byte[] myReadBuffer = new byte[2048];
+                    await nwStream.ReadAsync(myReadBuffer, 0, myReadBuffer.Length);
+                    String st = Encoding.UTF8.GetString(myReadBuffer);
+                    String[] msgs = st.Split(';');
+
+                    foreach (String msg in msgs)
                     {
-                        /*case "UFL":
-                            eUSFL.Text = elt[1];
-                            break;
-                        case "UFC":
-                            eUSFC.Text = elt[1];
-                            break;
-                        case "UFR":
-                            eUSFR.Text = elt[1];
-                            break;
-                        case "URL":
-                            eUSRL.Text = elt[1];
-                            break;
-                        case "URC":
-                            eUSRC.Text = elt[1];
-                            break;
-                        case "URR":
-                            eUSRR.Text = elt[1];
-                            break;
-                        case "POS":
-                            ePOS.Text = elt[1];
-                            break;
-                        case "BAT":
-                            eBAT.Text = elt[1];
-                            break;
-                        case "SWL":
-                            eSPL.Text = elt[1];
-                            break;
-                        case "SWR":
-                            eSPR.Text = elt[1];
-                            break;*/
-                        case "YAW":
-                            eYAW.Text = elt[1];
-                            break;
-                        case "ROL":
-                            eROL.Text = elt[1];
-                            break;
-                        case "PIT":
-                            ePITCH.Text = elt[1];
-                            break;
-                        default:
-                            cmpt = (cmpt + 1) % 100;
-                            break;
-                    }
-                    if (cmpt == 0)
-                    {
+                        Console.WriteLine(msg);
+                        String[] elt = msg.Split(':');
                         switch (elt[0])
                         {
-                            case "UFL":
+                            /*case "UFL":
                                 eUSFL.Text = elt[1];
                                 break;
                             case "UFC":
@@ -148,86 +101,157 @@ namespace UIGeiCar___Nairobi
                                 break;
                             case "SWR":
                                 eSPR.Text = elt[1];
+                                break;*/
+                            case "YAW":
+                                eYAW.Text = elt[1];
                                 break;
+                            case "ROL":
+                                eROL.Text = elt[1];
+                                break;
+                            case "PIT":
+                                ePITCH.Text = elt[1];
+                                break;
+                            default:
+                                cmpt = (cmpt + 1) % 100;
+                                break;
+                        }
+                        if (cmpt == 0)
+                        {
+                            switch (elt[0])
+                            {
+                                case "UFL":
+                                    eUSFL.Text = elt[1];
+                                    break;
+                                case "UFC":
+                                    eUSFC.Text = elt[1];
+                                    break;
+                                case "UFR":
+                                    eUSFR.Text = elt[1];
+                                    break;
+                                case "URL":
+                                    eUSRL.Text = elt[1];
+                                    break;
+                                case "URC":
+                                    eUSRC.Text = elt[1];
+                                    break;
+                                case "URR":
+                                    eUSRR.Text = elt[1];
+                                    break;
+                                case "POS":
+                                    ePOS.Text = elt[1];
+                                    break;
+                                case "BAT":
+                                    eBAT.Text = elt[1];
+                                    break;
+                                case "SWL":
+                                    eSPL.Text = elt[1];
+                                    break;
+                                case "SWR":
+                                    eSPR.Text = elt[1];
+                                    break;
+                            }
                         }
                     }
                 }
             }
-
         }
 
-        private void bright_Click(object sender, EventArgs e)
+        private void Bright_Click(object sender, EventArgs e)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes("STE" + "left"); //WHY??
-            nwStream.Write(bytes, 0, bytes.Length);
+            if (bConnected)
+            {
+                byte[] bytes = Encoding.ASCII.GetBytes("STE" + "right");
+                nwStream.Write(bytes, 0, bytes.Length);
+            }
         }
 
-        private void bbackward_Click(object sender, EventArgs e)
+        private void Bbackward_Click(object sender, EventArgs e)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes("MOV" + "backward");
-            nwStream.Write(bytes, 0, bytes.Length);
+            if (bConnected)
+            {
+                byte[] bytes = Encoding.ASCII.GetBytes("MOV" + "backward");
+                nwStream.Write(bytes, 0, bytes.Length);
+            }
         }
 
-        private void bleft_Click(object sender, EventArgs e)
+        private void Bleft_Click(object sender, EventArgs e)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes("STE" + "right"); //WHY??
-            nwStream.Write(bytes, 0, bytes.Length);
+            if (bConnected)
+            {
+                byte[] bytes = Encoding.ASCII.GetBytes("STE" + "left");
+                nwStream.Write(bytes, 0, bytes.Length);
+            }
         }
 
-        private void bforward_Click(object sender, EventArgs e)
+        private void Bforward_Click(object sender, EventArgs e)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes("MOV" + "forward");
-            nwStream.Write(bytes, 0, bytes.Length);
+            if (bConnected)
+            {
+                byte[] bytes = Encoding.ASCII.GetBytes("MOV" + "forward");
+                nwStream.Write(bytes, 0, bytes.Length);
+            }
         }
 
-        private void bstopSTE_Click(object sender, EventArgs e)
+        private void BstopSTE_Click(object sender, EventArgs e)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes("STE" + "stop");
-            nwStream.Write(bytes, 0, bytes.Length);
+            if (bConnected)
+            {
+                byte[] bytes = Encoding.ASCII.GetBytes("STE" + "stop");
+                nwStream.Write(bytes, 0, bytes.Length);
+            }
         }
 
-        private void bstopMOV_Click(object sender, EventArgs e)
+        private void BstopMOV_Click(object sender, EventArgs e)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes("MOV" + "stop");
-            nwStream.Write(bytes, 0, bytes.Length);
+            if (bConnected)
+            {
+                byte[] bytes = Encoding.ASCII.GetBytes("MOV" + "stop");
+                nwStream.Write(bytes, 0, bytes.Length);
+            }
         }
-
+        
         private void UIGeiCar_KeyDown(object sender, KeyEventArgs e)
         {
             byte[] bytes = Encoding.ASCII.GetBytes("STE" + "stop");
-            switch (e.KeyCode)
+            if (bConnected)
             {
-                case Keys.Down:
-                    bytes = Encoding.ASCII.GetBytes("MOV" + "backward");
-                    break;
-                case Keys.Up:
-                    bytes = Encoding.ASCII.GetBytes("MOV" + "forward");
-                    break;
-                case Keys.Left:
-                    bytes = Encoding.ASCII.GetBytes("STE" + "left");
-                    break;
-                case Keys.Right:
-                    bytes = Encoding.ASCII.GetBytes("STE" + "right");
-                    break;
+                switch (e.KeyCode)
+                {
+                    case Keys.Down:
+                        bytes = Encoding.ASCII.GetBytes("MOV" + "backward");
+                        break;
+                    case Keys.Up:
+                        bytes = Encoding.ASCII.GetBytes("MOV" + "forward");
+                        break;
+                    case Keys.Left:
+                        bytes = Encoding.ASCII.GetBytes("STE" + "left");
+                        break;
+                    case Keys.Right:
+                        bytes = Encoding.ASCII.GetBytes("STE" + "right");
+                        break;
+                }
+                nwStream.Write(bytes, 0, bytes.Length);
             }
-            nwStream.Write(bytes, 0, bytes.Length);
         }
 
         private void UIGeiCar_KeyUp(object sender, KeyEventArgs e)
         {
             byte[] bytes = Encoding.ASCII.GetBytes("STE" + "stop");
-            switch (e.KeyCode)
+            if (bConnected)
             {
-                case Keys.Down:
-                case Keys.Up:
-                    bytes = Encoding.ASCII.GetBytes("MOV" + "stop");
-                    break;
-                case Keys.Left:
-                case Keys.Right:
-                    bytes = Encoding.ASCII.GetBytes("STE" + "stop");
-                    break;
+                switch (e.KeyCode)
+                {
+                    case Keys.Down:
+                    case Keys.Up:
+                        bytes = Encoding.ASCII.GetBytes("MOV" + "stop");
+                        break;
+                    case Keys.Left:
+                    case Keys.Right:
+                        bytes = Encoding.ASCII.GetBytes("STE" + "stop");
+                        break;
+                }
+                nwStream.Write(bytes, 0, bytes.Length);
             }
-            nwStream.Write(bytes, 0, bytes.Length);
         }
 
         private void UIGeiCar_FormClosing(object sender, FormClosingEventArgs e)
@@ -239,6 +263,32 @@ namespace UIGeiCar___Nairobi
         {
             byte[] bytes = Encoding.ASCII.GetBytes("SPE" + SpdBar.Value.ToString());
             nwStream.Write(bytes, 0, bytes.Length);
+            eSPD.Text = SpdBar.Value.ToString();
         }
+
+        private void KbCtrl_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            byte[] bytes = Encoding.ASCII.GetBytes("STE" + "stop");
+            if (bConnected)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Down:
+                        bytes = Encoding.ASCII.GetBytes("MOV" + "backward");
+                        break;
+                    case Keys.Up:
+                        bytes = Encoding.ASCII.GetBytes("MOV" + "forward");
+                        break;
+                    case Keys.Left:
+                        bytes = Encoding.ASCII.GetBytes("STE" + "left");
+                        break;
+                    case Keys.Right:
+                        bytes = Encoding.ASCII.GetBytes("STE" + "right");
+                        break;
+                }
+                nwStream.Write(bytes, 0, bytes.Length);
+            }
+        }
+        
     }
 }
