@@ -1,6 +1,10 @@
 # coding: utf-8
 
 from threading import Thread
+import time
+import can
+import os
+import struct
 
 #importing variables linked
 import VarNairobi
