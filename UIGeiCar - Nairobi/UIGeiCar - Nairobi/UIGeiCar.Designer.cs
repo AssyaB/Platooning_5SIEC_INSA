@@ -70,6 +70,8 @@
             this.eUSFL = new System.Windows.Forms.Label();
             this.eSPD = new System.Windows.Forms.Label();
             this.kbCtrl = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BmodePlatooning = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SpdBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.infoLayout.SuspendLayout();
@@ -78,134 +80,149 @@
             // lblSpeed
             // 
             this.lblSpeed.AutoSize = true;
-            this.lblSpeed.Location = new System.Drawing.Point(429, 28);
+            this.lblSpeed.Location = new System.Drawing.Point(572, 34);
+            this.lblSpeed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpeed.Name = "lblSpeed";
-            this.lblSpeed.Size = new System.Drawing.Size(38, 13);
+            this.lblSpeed.Size = new System.Drawing.Size(49, 17);
             this.lblSpeed.TabIndex = 9;
             this.lblSpeed.Text = "Speed";
             // 
             // lBAT
             // 
             this.lBAT.AutoSize = true;
-            this.lBAT.Location = new System.Drawing.Point(25, 66);
+            this.lBAT.Location = new System.Drawing.Point(33, 81);
+            this.lBAT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lBAT.Name = "lBAT";
-            this.lBAT.Size = new System.Drawing.Size(28, 13);
+            this.lBAT.Size = new System.Drawing.Size(35, 17);
             this.lBAT.TabIndex = 10;
             this.lBAT.Text = "BAT";
             // 
             // lPOS
             // 
             this.lPOS.AutoSize = true;
-            this.lPOS.Location = new System.Drawing.Point(25, 79);
+            this.lPOS.Location = new System.Drawing.Point(33, 97);
+            this.lPOS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lPOS.Name = "lPOS";
-            this.lPOS.Size = new System.Drawing.Size(29, 13);
+            this.lPOS.Size = new System.Drawing.Size(37, 17);
             this.lPOS.TabIndex = 12;
             this.lPOS.Text = "POS";
             // 
             // lSPL
             // 
             this.lSPL.AutoSize = true;
-            this.lSPL.Location = new System.Drawing.Point(25, 92);
+            this.lSPL.Location = new System.Drawing.Point(33, 113);
+            this.lSPL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lSPL.Name = "lSPL";
-            this.lSPL.Size = new System.Drawing.Size(27, 13);
+            this.lSPL.Size = new System.Drawing.Size(34, 17);
             this.lSPL.TabIndex = 14;
             this.lSPL.Text = "SPL";
             // 
             // lSPR
             // 
             this.lSPR.AutoSize = true;
-            this.lSPR.Location = new System.Drawing.Point(25, 105);
+            this.lSPR.Location = new System.Drawing.Point(33, 129);
+            this.lSPR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lSPR.Name = "lSPR";
-            this.lSPR.Size = new System.Drawing.Size(29, 13);
+            this.lSPR.Size = new System.Drawing.Size(36, 17);
             this.lSPR.TabIndex = 16;
             this.lSPR.Text = "SPR";
             // 
             // lUSFL
             // 
             this.lUSFL.AutoSize = true;
-            this.lUSFL.Location = new System.Drawing.Point(121, 95);
+            this.lUSFL.Location = new System.Drawing.Point(161, 117);
+            this.lUSFL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lUSFL.Name = "lUSFL";
-            this.lUSFL.Size = new System.Drawing.Size(37, 13);
+            this.lUSFL.Size = new System.Drawing.Size(47, 17);
             this.lUSFL.TabIndex = 22;
             this.lUSFL.Text = "US FL";
             // 
             // lUSLC
             // 
             this.lUSLC.AutoSize = true;
-            this.lUSLC.Location = new System.Drawing.Point(170, 66);
+            this.lUSLC.Location = new System.Drawing.Point(227, 81);
+            this.lUSLC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lUSLC.Name = "lUSLC";
-            this.lUSLC.Size = new System.Drawing.Size(38, 13);
+            this.lUSLC.Size = new System.Drawing.Size(48, 17);
             this.lUSLC.TabIndex = 24;
             this.lUSLC.Text = "US FC";
             // 
             // lUSFR
             // 
             this.lUSFR.AutoSize = true;
-            this.lUSFR.Location = new System.Drawing.Point(206, 44);
+            this.lUSFR.Location = new System.Drawing.Point(275, 54);
+            this.lUSFR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lUSFR.Name = "lUSFR";
-            this.lUSFR.Size = new System.Drawing.Size(39, 13);
+            this.lUSFR.Size = new System.Drawing.Size(49, 17);
             this.lUSFR.TabIndex = 26;
             this.lUSFR.Text = "US FR";
             // 
             // lUSRR
             // 
             this.lUSRR.AutoSize = true;
-            this.lUSRR.Location = new System.Drawing.Point(224, 181);
+            this.lUSRR.Location = new System.Drawing.Point(299, 223);
+            this.lUSRR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lUSRR.Name = "lUSRR";
-            this.lUSRR.Size = new System.Drawing.Size(41, 13);
+            this.lUSRR.Size = new System.Drawing.Size(51, 17);
             this.lUSRR.TabIndex = 28;
             this.lUSRR.Text = "US RR";
             // 
             // lUSRC
             // 
             this.lUSRC.AutoSize = true;
-            this.lUSRC.Location = new System.Drawing.Point(170, 207);
+            this.lUSRC.Location = new System.Drawing.Point(227, 255);
+            this.lUSRC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lUSRC.Name = "lUSRC";
-            this.lUSRC.Size = new System.Drawing.Size(40, 13);
+            this.lUSRC.Size = new System.Drawing.Size(50, 17);
             this.lUSRC.TabIndex = 30;
             this.lUSRC.Text = "US RC";
             // 
             // lUSRL
             // 
             this.lUSRL.AutoSize = true;
-            this.lUSRL.Location = new System.Drawing.Point(119, 181);
+            this.lUSRL.Location = new System.Drawing.Point(159, 223);
+            this.lUSRL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lUSRL.Name = "lUSRL";
-            this.lUSRL.Size = new System.Drawing.Size(39, 13);
+            this.lUSRL.Size = new System.Drawing.Size(49, 17);
             this.lUSRL.TabIndex = 32;
             this.lUSRL.Text = "US RL";
             // 
             // lROL
             // 
             this.lROL.AutoSize = true;
-            this.lROL.Location = new System.Drawing.Point(25, 184);
+            this.lROL.Location = new System.Drawing.Point(33, 226);
+            this.lROL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lROL.Name = "lROL";
-            this.lROL.Size = new System.Drawing.Size(29, 13);
+            this.lROL.Size = new System.Drawing.Size(37, 17);
             this.lROL.TabIndex = 42;
             this.lROL.Text = "ROL";
             // 
             // lPITCH
             // 
             this.lPITCH.AutoSize = true;
-            this.lPITCH.Location = new System.Drawing.Point(25, 158);
+            this.lPITCH.Location = new System.Drawing.Point(33, 194);
+            this.lPITCH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lPITCH.Name = "lPITCH";
-            this.lPITCH.Size = new System.Drawing.Size(39, 13);
+            this.lPITCH.Size = new System.Drawing.Size(48, 17);
             this.lPITCH.TabIndex = 40;
             this.lPITCH.Text = "PITCH";
             // 
             // lYAW
             // 
             this.lYAW.AutoSize = true;
-            this.lYAW.Location = new System.Drawing.Point(25, 132);
+            this.lYAW.Location = new System.Drawing.Point(33, 162);
+            this.lYAW.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lYAW.Name = "lYAW";
-            this.lYAW.Size = new System.Drawing.Size(32, 13);
+            this.lYAW.Size = new System.Drawing.Size(39, 17);
             this.lYAW.TabIndex = 38;
             this.lYAW.Text = "YAW";
             // 
             // bconnect
             // 
-            this.bconnect.Location = new System.Drawing.Point(196, 11);
+            this.bconnect.Location = new System.Drawing.Point(261, 14);
+            this.bconnect.Margin = new System.Windows.Forms.Padding(4);
             this.bconnect.Name = "bconnect";
-            this.bconnect.Size = new System.Drawing.Size(75, 23);
+            this.bconnect.Size = new System.Drawing.Size(100, 28);
             this.bconnect.TabIndex = 0;
             this.bconnect.Text = "Connect";
             this.bconnect.UseVisualStyleBackColor = true;
@@ -213,18 +230,20 @@
             // 
             // ip
             // 
-            this.ip.Location = new System.Drawing.Point(13, 13);
+            this.ip.Location = new System.Drawing.Point(17, 16);
+            this.ip.Margin = new System.Windows.Forms.Padding(4);
             this.ip.Name = "ip";
-            this.ip.Size = new System.Drawing.Size(177, 20);
+            this.ip.Size = new System.Drawing.Size(235, 22);
             this.ip.TabIndex = 1;
             // 
             // SpdBar
             // 
             this.SpdBar.Enabled = false;
-            this.SpdBar.Location = new System.Drawing.Point(395, 44);
+            this.SpdBar.Location = new System.Drawing.Point(527, 54);
+            this.SpdBar.Margin = new System.Windows.Forms.Padding(4);
             this.SpdBar.Maximum = 50;
             this.SpdBar.Name = "SpdBar";
-            this.SpdBar.Size = new System.Drawing.Size(104, 45);
+            this.SpdBar.Size = new System.Drawing.Size(139, 56);
             this.SpdBar.TabIndex = 2;
             this.SpdBar.Value = 10;
             this.SpdBar.ValueChanged += new System.EventHandler(this.SpdBar_ValueChanged);
@@ -232,9 +251,10 @@
             // bforward
             // 
             this.bforward.Enabled = false;
-            this.bforward.Location = new System.Drawing.Point(406, 95);
+            this.bforward.Location = new System.Drawing.Point(541, 117);
+            this.bforward.Margin = new System.Windows.Forms.Padding(4);
             this.bforward.Name = "bforward";
-            this.bforward.Size = new System.Drawing.Size(75, 23);
+            this.bforward.Size = new System.Drawing.Size(100, 28);
             this.bforward.TabIndex = 3;
             this.bforward.Text = "Forward";
             this.bforward.UseVisualStyleBackColor = true;
@@ -243,9 +263,10 @@
             // bright
             // 
             this.bright.Enabled = false;
-            this.bright.Location = new System.Drawing.Point(487, 124);
+            this.bright.Location = new System.Drawing.Point(649, 153);
+            this.bright.Margin = new System.Windows.Forms.Padding(4);
             this.bright.Name = "bright";
-            this.bright.Size = new System.Drawing.Size(75, 23);
+            this.bright.Size = new System.Drawing.Size(100, 28);
             this.bright.TabIndex = 4;
             this.bright.Text = "Right";
             this.bright.UseVisualStyleBackColor = true;
@@ -254,9 +275,10 @@
             // bleft
             // 
             this.bleft.Enabled = false;
-            this.bleft.Location = new System.Drawing.Point(325, 124);
+            this.bleft.Location = new System.Drawing.Point(433, 153);
+            this.bleft.Margin = new System.Windows.Forms.Padding(4);
             this.bleft.Name = "bleft";
-            this.bleft.Size = new System.Drawing.Size(75, 23);
+            this.bleft.Size = new System.Drawing.Size(100, 28);
             this.bleft.TabIndex = 5;
             this.bleft.Text = "Left";
             this.bleft.UseVisualStyleBackColor = true;
@@ -265,9 +287,10 @@
             // bbackward
             // 
             this.bbackward.Enabled = false;
-            this.bbackward.Location = new System.Drawing.Point(406, 124);
+            this.bbackward.Location = new System.Drawing.Point(541, 153);
+            this.bbackward.Margin = new System.Windows.Forms.Padding(4);
             this.bbackward.Name = "bbackward";
-            this.bbackward.Size = new System.Drawing.Size(75, 23);
+            this.bbackward.Size = new System.Drawing.Size(100, 28);
             this.bbackward.TabIndex = 6;
             this.bbackward.Text = "Backward";
             this.bbackward.UseVisualStyleBackColor = true;
@@ -276,9 +299,10 @@
             // bstopSTE
             // 
             this.bstopSTE.Enabled = false;
-            this.bstopSTE.Location = new System.Drawing.Point(325, 153);
+            this.bstopSTE.Location = new System.Drawing.Point(433, 188);
+            this.bstopSTE.Margin = new System.Windows.Forms.Padding(4);
             this.bstopSTE.Name = "bstopSTE";
-            this.bstopSTE.Size = new System.Drawing.Size(104, 23);
+            this.bstopSTE.Size = new System.Drawing.Size(139, 28);
             this.bstopSTE.TabIndex = 7;
             this.bstopSTE.Text = "Stop Rot.";
             this.bstopSTE.UseVisualStyleBackColor = true;
@@ -287,9 +311,10 @@
             // bstopMOV
             // 
             this.bstopMOV.Enabled = false;
-            this.bstopMOV.Location = new System.Drawing.Point(458, 153);
+            this.bstopMOV.Location = new System.Drawing.Point(611, 188);
+            this.bstopMOV.Margin = new System.Windows.Forms.Padding(4);
             this.bstopMOV.Name = "bstopMOV";
-            this.bstopMOV.Size = new System.Drawing.Size(104, 23);
+            this.bstopMOV.Size = new System.Drawing.Size(139, 28);
             this.bstopMOV.TabIndex = 8;
             this.bstopMOV.Text = "Stop Mov.";
             this.bstopMOV.UseVisualStyleBackColor = true;
@@ -298,151 +323,168 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(164, 95);
+            this.pictureBox1.Location = new System.Drawing.Point(219, 117);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(54, 99);
+            this.pictureBox1.Size = new System.Drawing.Size(72, 122);
             this.pictureBox1.TabIndex = 44;
             this.pictureBox1.TabStop = false;
             // 
             // eBAT
             // 
             this.eBAT.AutoSize = true;
-            this.eBAT.Location = new System.Drawing.Point(59, 66);
+            this.eBAT.Location = new System.Drawing.Point(79, 81);
+            this.eBAT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eBAT.Name = "eBAT";
-            this.eBAT.Size = new System.Drawing.Size(13, 13);
+            this.eBAT.Size = new System.Drawing.Size(16, 17);
             this.eBAT.TabIndex = 45;
             this.eBAT.Text = "0";
             // 
             // ePOS
             // 
             this.ePOS.AutoSize = true;
-            this.ePOS.Location = new System.Drawing.Point(59, 79);
+            this.ePOS.Location = new System.Drawing.Point(79, 97);
+            this.ePOS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ePOS.Name = "ePOS";
-            this.ePOS.Size = new System.Drawing.Size(13, 13);
+            this.ePOS.Size = new System.Drawing.Size(16, 17);
             this.ePOS.TabIndex = 46;
             this.ePOS.Text = "0";
             // 
             // eSPL
             // 
             this.eSPL.AutoSize = true;
-            this.eSPL.Location = new System.Drawing.Point(59, 92);
+            this.eSPL.Location = new System.Drawing.Point(79, 113);
+            this.eSPL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eSPL.Name = "eSPL";
-            this.eSPL.Size = new System.Drawing.Size(13, 13);
+            this.eSPL.Size = new System.Drawing.Size(16, 17);
             this.eSPL.TabIndex = 47;
             this.eSPL.Text = "0";
             // 
             // eSPR
             // 
             this.eSPR.AutoSize = true;
-            this.eSPR.Location = new System.Drawing.Point(59, 105);
+            this.eSPR.Location = new System.Drawing.Point(79, 129);
+            this.eSPR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eSPR.Name = "eSPR";
-            this.eSPR.Size = new System.Drawing.Size(13, 13);
+            this.eSPR.Size = new System.Drawing.Size(16, 17);
             this.eSPR.TabIndex = 48;
             this.eSPR.Text = "0";
             // 
             // eYAW
             // 
             this.eYAW.AutoSize = true;
-            this.eYAW.Location = new System.Drawing.Point(35, 145);
+            this.eYAW.Location = new System.Drawing.Point(47, 178);
+            this.eYAW.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eYAW.Name = "eYAW";
-            this.eYAW.Size = new System.Drawing.Size(13, 13);
+            this.eYAW.Size = new System.Drawing.Size(16, 17);
             this.eYAW.TabIndex = 49;
             this.eYAW.Text = "0";
             // 
             // ePITCH
             // 
             this.ePITCH.AutoSize = true;
-            this.ePITCH.Location = new System.Drawing.Point(35, 171);
+            this.ePITCH.Location = new System.Drawing.Point(47, 210);
+            this.ePITCH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ePITCH.Name = "ePITCH";
-            this.ePITCH.Size = new System.Drawing.Size(13, 13);
+            this.ePITCH.Size = new System.Drawing.Size(16, 17);
             this.ePITCH.TabIndex = 50;
             this.ePITCH.Text = "0";
             // 
             // eROL
             // 
             this.eROL.AutoSize = true;
-            this.eROL.Location = new System.Drawing.Point(35, 197);
+            this.eROL.Location = new System.Drawing.Point(47, 242);
+            this.eROL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eROL.Name = "eROL";
-            this.eROL.Size = new System.Drawing.Size(13, 13);
+            this.eROL.Size = new System.Drawing.Size(16, 17);
             this.eROL.TabIndex = 51;
             this.eROL.Text = "0";
             // 
             // eUSFR
             // 
             this.eUSFR.AutoSize = true;
-            this.eUSFR.Location = new System.Drawing.Point(224, 79);
+            this.eUSFR.Location = new System.Drawing.Point(299, 97);
+            this.eUSFR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eUSFR.Name = "eUSFR";
-            this.eUSFR.Size = new System.Drawing.Size(13, 13);
+            this.eUSFR.Size = new System.Drawing.Size(16, 17);
             this.eUSFR.TabIndex = 52;
             this.eUSFR.Text = "0";
             // 
             // infoLayout
             // 
             this.infoLayout.Controls.Add(this.lUSFR);
-            this.infoLayout.Location = new System.Drawing.Point(18, 51);
+            this.infoLayout.Location = new System.Drawing.Point(24, 63);
+            this.infoLayout.Margin = new System.Windows.Forms.Padding(4);
             this.infoLayout.Name = "infoLayout";
-            this.infoLayout.Size = new System.Drawing.Size(253, 180);
+            this.infoLayout.Size = new System.Drawing.Size(337, 222);
             this.infoLayout.TabIndex = 58;
             // 
             // eUSRR
             // 
             this.eUSRR.AutoSize = true;
-            this.eUSRR.Location = new System.Drawing.Point(224, 194);
+            this.eUSRR.Location = new System.Drawing.Point(299, 239);
+            this.eUSRR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eUSRR.Name = "eUSRR";
-            this.eUSRR.Size = new System.Drawing.Size(13, 13);
+            this.eUSRR.Size = new System.Drawing.Size(16, 17);
             this.eUSRR.TabIndex = 53;
             this.eUSRR.Text = "0";
             // 
             // eUSRC
             // 
             this.eUSRC.AutoSize = true;
-            this.eUSRC.Location = new System.Drawing.Point(184, 194);
+            this.eUSRC.Location = new System.Drawing.Point(245, 239);
+            this.eUSRC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eUSRC.Name = "eUSRC";
-            this.eUSRC.Size = new System.Drawing.Size(13, 13);
+            this.eUSRC.Size = new System.Drawing.Size(16, 17);
             this.eUSRC.TabIndex = 54;
             this.eUSRC.Text = "0";
             // 
             // eUSRL
             // 
             this.eUSRL.AutoSize = true;
-            this.eUSRL.Location = new System.Drawing.Point(145, 194);
+            this.eUSRL.Location = new System.Drawing.Point(193, 239);
+            this.eUSRL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eUSRL.Name = "eUSRL";
-            this.eUSRL.Size = new System.Drawing.Size(13, 13);
+            this.eUSRL.Size = new System.Drawing.Size(16, 17);
             this.eUSRL.TabIndex = 55;
             this.eUSRL.Text = "0";
             // 
             // eUSFC
             // 
             this.eUSFC.AutoSize = true;
-            this.eUSFC.Location = new System.Drawing.Point(184, 79);
+            this.eUSFC.Location = new System.Drawing.Point(245, 97);
+            this.eUSFC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eUSFC.Name = "eUSFC";
-            this.eUSFC.Size = new System.Drawing.Size(13, 13);
+            this.eUSFC.Size = new System.Drawing.Size(16, 17);
             this.eUSFC.TabIndex = 56;
             this.eUSFC.Text = "0";
             // 
             // eUSFL
             // 
             this.eUSFL.AutoSize = true;
-            this.eUSFL.Location = new System.Drawing.Point(145, 79);
+            this.eUSFL.Location = new System.Drawing.Point(193, 97);
+            this.eUSFL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eUSFL.Name = "eUSFL";
-            this.eUSFL.Size = new System.Drawing.Size(13, 13);
+            this.eUSFL.Size = new System.Drawing.Size(16, 17);
             this.eUSFL.TabIndex = 57;
             this.eUSFL.Text = "0";
             // 
             // eSPD
             // 
             this.eSPD.AutoSize = true;
-            this.eSPD.Location = new System.Drawing.Point(473, 28);
+            this.eSPD.Location = new System.Drawing.Point(631, 34);
+            this.eSPD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.eSPD.Name = "eSPD";
-            this.eSPD.Size = new System.Drawing.Size(19, 13);
+            this.eSPD.Size = new System.Drawing.Size(24, 17);
             this.eSPD.TabIndex = 59;
             this.eSPD.Text = "10";
             // 
             // kbCtrl
             // 
-            this.kbCtrl.Location = new System.Drawing.Point(387, 197);
+            this.kbCtrl.Location = new System.Drawing.Point(516, 242);
+            this.kbCtrl.Margin = new System.Windows.Forms.Padding(4);
             this.kbCtrl.Name = "kbCtrl";
-            this.kbCtrl.Size = new System.Drawing.Size(112, 23);
+            this.kbCtrl.Size = new System.Drawing.Size(149, 28);
             this.kbCtrl.TabIndex = 60;
             this.kbCtrl.Text = "KeyBoard Control";
             this.kbCtrl.UseVisualStyleBackColor = true;
@@ -450,11 +492,36 @@
             this.kbCtrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyUp);
             this.kbCtrl.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.KbCtrl_PreviewKeyDown);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(190, 318);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(199, 32);
+            this.label1.TabIndex = 61;
+            this.label1.Text = "PLATOONING";
+            // 
+            // BmodePlatooning
+            // 
+            this.BmodePlatooning.AutoSize = true;
+            this.BmodePlatooning.BackgroundImage = global::UIGeiCar___Nairobi.Properties.Resources.OFF;
+            this.BmodePlatooning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BmodePlatooning.Location = new System.Drawing.Point(196, 353);
+            this.BmodePlatooning.Name = "BmodePlatooning";
+            this.BmodePlatooning.Size = new System.Drawing.Size(188, 70);
+            this.BmodePlatooning.TabIndex = 62;
+            this.BmodePlatooning.UseVisualStyleBackColor = true;
+            this.BmodePlatooning.Click += new System.EventHandler(this.BmodePlatooning_Click);
+            // 
             // UIGeiCar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 353);
+            this.ClientSize = new System.Drawing.Size(771, 434);
+            this.Controls.Add(this.BmodePlatooning);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.kbCtrl);
             this.Controls.Add(this.eSPD);
             this.Controls.Add(this.eUSFL);
@@ -495,6 +562,7 @@
             this.Controls.Add(this.bconnect);
             this.Controls.Add(this.infoLayout);
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UIGeiCar";
             this.Text = "GeiCar";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UIGeiCar_FormClosing);
@@ -551,6 +619,8 @@
         private System.Windows.Forms.Panel infoLayout;
         private System.Windows.Forms.Label eSPD;
         private System.Windows.Forms.Button kbCtrl;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BmodePlatooning;
     }
 }
 

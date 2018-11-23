@@ -16,6 +16,7 @@ namespace UIGeiCar___Nairobi
         TcpClient clientSocket = new TcpClient();
         NetworkStream nwStream;
         Boolean bConnected = false;
+        Boolean platooning_mode = false;
 
         public UIGeiCar()
         {
@@ -289,6 +290,28 @@ namespace UIGeiCar___Nairobi
                 nwStream.Write(bytes, 0, bytes.Length);
             }
         }
-        
+
+        private void BmodePlatooning_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                if (platooning_mode == false)
+                {
+                    byte[] bytes = Encoding.ASCII.GetBytes("PLA" + "on");
+                    BmodePlatooning.BackgroundImage = Properties.Resources.ON;
+                    //nwStream.Write(bytes, 0, bytes.Length);
+                    platooning_mode = true;
+                    BmodePlatooning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                }
+                else
+                {
+                    byte[] bytes = Encoding.ASCII.GetBytes("PLA" + "off");
+                    BmodePlatooning.BackgroundImage = Properties.Resources.OFF;
+                    //nwStream.Write(bytes, 0, bytes.Length);
+                    platooning_mode = false;
+                    BmodePlatooning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                }
+            }
+        }
     }
 }
