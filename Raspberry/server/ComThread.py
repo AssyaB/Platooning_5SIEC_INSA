@@ -56,7 +56,7 @@ OM2 = 0x102
 
 class MySend(Thread):
 
-    def __init__(self,conn, bus):
+    def __init__(self, conn, bus):
         Thread.__init__(self)
         self.conn = conn
         self.bus = bus
