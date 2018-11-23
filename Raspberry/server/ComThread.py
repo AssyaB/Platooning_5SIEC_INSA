@@ -164,7 +164,7 @@ class MyReceive(Thread):
         self.enable = 0
 
         while True :
-            data = conn.recv(1024)
+            data = self.conn.recv(1024)
 
             if not data: break
 
@@ -230,4 +230,4 @@ class MyReceive(Thread):
             print(msg)
             self.bus.send(msg)
 
-        conn.close()
+        self.conn.close()
