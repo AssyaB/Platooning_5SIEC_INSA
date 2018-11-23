@@ -10,7 +10,7 @@ import struct
 from ComThread import *
 
 #importing variables linked
-import VarNairobi
+from VarNairobi import *
 
 HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 6666              # Arbitrary non-privileged port

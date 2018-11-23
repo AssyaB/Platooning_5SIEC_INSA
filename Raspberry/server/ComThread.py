@@ -7,7 +7,7 @@ import os
 import struct
 
 #importing variables linked
-import VarNairobi
+from VarNairobi import *
 
 MCM = 0x010
 MS = 0x100
