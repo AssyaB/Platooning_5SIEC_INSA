@@ -1,5 +1,7 @@
 # coding: utf-8
 
+from threading import Thread
+
 #importing variables linked
 import VarNairobi
 
