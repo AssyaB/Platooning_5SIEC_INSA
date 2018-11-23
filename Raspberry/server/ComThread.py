@@ -209,12 +209,12 @@ class MyReceive(Thread):
             #edition des commandes de mouvement
             if ~self.move:
                 cmd_mv = (50 + self.move*self.speed_cmd) & ~0x80
-            else
+            else:
                 cmd_mv = (50 + self.move*self.speed_cmd) | 0x80
 
             if ~self.turn:
                 cmd_turn = 50 +self.turn*20 & 0x80
-            else
+            else:
                 cmd_turn = 50 + self.turn*20 | 0x80
 
             print("mv:",cmd_mv,"turn:",cmd_turn)
