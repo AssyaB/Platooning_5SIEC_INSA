@@ -8,6 +8,9 @@ import struct
 HOSTPLAT = "10.105.0.53"
 PORTPLAT = 7777
 
+#importing variables linked
+from VarNairobi import *
+
 class MyReceivePlat(Thread):
     
     def __init__(self,connplat, bus):
