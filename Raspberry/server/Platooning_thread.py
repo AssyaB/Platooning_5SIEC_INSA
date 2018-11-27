@@ -13,23 +13,23 @@ class MyReceivePlat(Thread):
     def __init__(self,connplat, bus):
         Thread.__init__(self)
         self.bus = bus
-        self.conn = connplat
+        self.connplat = connplat
         
     def run(self):
         while True :
-            data = self.conn.recv(1024)
+            data = self.connplat.recv(1024)
             
             if not data: break  
                 
             print('Received', repr(data))
         
-        self.conn.close()        
+        self.connplat.close()        
 
 
 
 class MyPlatooning(Thread):
 
-    def __init__(self,connplat, bus):
+    def __init__(self,bus):
         Thread.__init__(self)
         self.bus = bus
 
