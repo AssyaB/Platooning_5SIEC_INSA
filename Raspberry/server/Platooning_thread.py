@@ -5,6 +5,9 @@ import can
 import os
 import struct
 
+# Echo server program
+import socket
+
 HOSTPLAT = "10.105.0.53"
 PORTPLAT = 7777
 
