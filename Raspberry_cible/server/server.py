@@ -14,7 +14,7 @@ from VarNairobi import *
 
 HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 6666              # Arbitrary non-privileged port
-HOSTPLAT = "10.105.1.85"
+HOSTPLAT = "10.105.0.53"
 PORTPLAT = 7777
 
 
