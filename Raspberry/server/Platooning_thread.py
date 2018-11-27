@@ -5,7 +5,7 @@ import can
 import os
 import struct
 
-HOSTPLAT = "10.105.1.85"
+HOSTPLAT = "10.105.0.53"
 PORTPLAT = 7777
 
 class MyReceivePlat(Thread):
