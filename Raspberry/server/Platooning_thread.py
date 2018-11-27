@@ -30,8 +30,6 @@ class MyPlatooning(Thread):
             splat = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             splat.connect(HOSTPLAT, PORTPLAT)
             
-            print('Connected by', addr)
-            
             newthread_platoon = MyReceive(conn, bus)
             newthread_platoon.start()
             newsend_platoon = MySend(conn, bus)
@@ -39,3 +37,5 @@ class MyPlatooning(Thread):
 
             newthread_platoon.join()
             newsend_platoon.join()
+
+            print('Received', repr(data))
