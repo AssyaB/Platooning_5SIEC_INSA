@@ -14,6 +14,9 @@ from VarNairobi import *
 
 HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 6666              # Arbitrary non-privileged port
+HOSTPLAT = "10.105.1.85"
+PORTPLAT = 7777
+
 
 # Echo server program
 import socket
@@ -32,21 +35,35 @@ if __name__ == "__main__":
         print('Cannot find PiCAN board.')
         exit()
 
+        
+    # Connection à l'application   
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((HOST, PORT))
     s.listen(1)
     conn, addr = s.accept()
     print('Connected by', addr)
 
-
     newthread = MyReceive(conn, bus)
     newthread.start()
     newsend = MySend(conn, bus)
     newsend.start()
 
+    
+    # Connection à la voiture qui suit
+    splat = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    splat.bind((HOST, PORTPLAT))
+    splat.listen(1)
+    connplat, addrplat = splat.accept()
+    print('Connected by', addrplat)
+
+    newsendplat = MySend(connplat, bus)
+    newsendplat.start()
+    
     newthread.join()
     newsend.join()
+    newsendplat.join()
 
+    
     print('Bring down CAN0....')
     os.system("sudo ifconfig can0 down")
     time.sleep(0.1)
