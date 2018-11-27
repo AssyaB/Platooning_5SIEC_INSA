@@ -8,6 +8,7 @@ import struct
 
 #importing Communications Threads
 from ComThread import *
+from Platooning_thread import *
 
 #importing variables linked
 from VarNairobi import *
