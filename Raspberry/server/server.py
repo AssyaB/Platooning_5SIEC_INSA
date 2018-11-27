@@ -43,10 +43,14 @@ if __name__ == "__main__":
     newthread.start()
     newsend = MySend(conn, bus)
     newsend.start()
-
+    
+    newthreadplat = MyPlatooning(bus)
+    newthreadplat.start()
+    
     newthread.join()
     newsend.join()
-
+    newthreadplat.join()
+    
     print('Bring down CAN0....')
     os.system("sudo ifconfig can0 down")
     time.sleep(0.1)
