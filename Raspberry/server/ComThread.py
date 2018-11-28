@@ -203,7 +203,7 @@ class MyReceive(Thread):
                     self.enable = 1
             elif (header == b'PLA'):
                 if (payload == b'on'):
-                    print("strarting platooning mode")
+                    print("starting platooning mode")
                 if (payload == b'off'):
                     print("stopping platooning mode")
 
