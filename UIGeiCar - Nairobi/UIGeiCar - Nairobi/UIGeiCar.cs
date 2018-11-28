@@ -56,6 +56,17 @@ namespace UIGeiCar___Nairobi
             bstopSTE.Enabled = true;
         }
 
+        private void DisableAll()
+        {
+            bforward.Enabled = false;
+            bright.Enabled = false;
+            SpdBar.Enabled = false;
+            bleft.Enabled = false;
+            bbackward.Enabled = false;
+            bstopMOV.Enabled = false;
+            bstopSTE.Enabled = false;
+        }
+
         async void Receive()
         {
             int cmpt = 0;
@@ -299,7 +310,7 @@ namespace UIGeiCar___Nairobi
                 {
                     byte[] bytes = Encoding.ASCII.GetBytes("PLA" + "on");
                     BmodePlatooning.BackgroundImage = Properties.Resources.ON;
-                    //nwStream.Write(bytes, 0, bytes.Length);
+                    nwStream.Write(bytes, 0, bytes.Length);
                     platooning_mode = true;
                     BmodePlatooning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
                 }
@@ -307,10 +318,29 @@ namespace UIGeiCar___Nairobi
                 {
                     byte[] bytes = Encoding.ASCII.GetBytes("PLA" + "off");
                     BmodePlatooning.BackgroundImage = Properties.Resources.OFF;
-                    //nwStream.Write(bytes, 0, bytes.Length);
+                    nwStream.Write(bytes, 0, bytes.Length);
                     platooning_mode = false;
                     BmodePlatooning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
                 }
+            }
+        }
+
+        private void Bdisconnect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clientSocket.Close();
+                bconnect.Enabled = true;
+                bdisconnect.Enabled = false;
+                bConnected = false;
+                ip.Enabled = true;
+                DisableAll();
+            }
+            catch (SocketException ex)
+            {
+                bConnected = true;
+                bconnect.Text = "Failed to disconnect";
+                Console.WriteLine(ex.Message);
             }
         }
     }

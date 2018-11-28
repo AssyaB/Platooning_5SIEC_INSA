@@ -72,6 +72,7 @@
             this.kbCtrl = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.BmodePlatooning = new System.Windows.Forms.Button();
+            this.bdisconnect = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SpdBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.infoLayout.SuspendLayout();
@@ -507,7 +508,7 @@
             // 
             this.BmodePlatooning.AutoSize = true;
             this.BmodePlatooning.BackgroundImage = global::UIGeiCar___Nairobi.Properties.Resources.OFF;
-            this.BmodePlatooning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BmodePlatooning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BmodePlatooning.Location = new System.Drawing.Point(196, 353);
             this.BmodePlatooning.Name = "BmodePlatooning";
             this.BmodePlatooning.Size = new System.Drawing.Size(188, 70);
@@ -515,11 +516,27 @@
             this.BmodePlatooning.UseVisualStyleBackColor = true;
             this.BmodePlatooning.Click += new System.EventHandler(this.BmodePlatooning_Click);
             // 
+            // bdisconnect
+            // 
+            this.bdisconnect.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bdisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bdisconnect.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.bdisconnect.FlatAppearance.BorderSize = 0;
+            this.bdisconnect.Location = new System.Drawing.Point(389, 14);
+            this.bdisconnect.Margin = new System.Windows.Forms.Padding(4);
+            this.bdisconnect.Name = "bdisconnect";
+            this.bdisconnect.Size = new System.Drawing.Size(100, 28);
+            this.bdisconnect.TabIndex = 63;
+            this.bdisconnect.Text = "Disconnect";
+            this.bdisconnect.UseVisualStyleBackColor = false;
+            this.bdisconnect.Click += new System.EventHandler(this.Bdisconnect_Click);
+            // 
             // UIGeiCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 434);
+            this.Controls.Add(this.bdisconnect);
             this.Controls.Add(this.BmodePlatooning);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.kbCtrl);
@@ -621,6 +638,7 @@
         private System.Windows.Forms.Button kbCtrl;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BmodePlatooning;
+        private System.Windows.Forms.Button bdisconnect;
     }
 }
 
