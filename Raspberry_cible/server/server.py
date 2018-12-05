@@ -55,7 +55,10 @@ if __name__ == "__main__":
     splat.listen(1)
     connplat, addrplat = splat.accept()
     print('Connected by', addrplat)
-
+    print("Sock :")
+    type(splat)
+    print("Conn :")
+    type(connplat)
     newsendplat = MySend(connplat, bus)
     newsendplat.start()
     
