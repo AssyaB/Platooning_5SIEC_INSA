@@ -8,6 +8,7 @@ import struct
 # Echo server program
 import socket
 
+HOSTPLAT = "192.168.137.87"
 PORTPLAT = 7777
 
 #importing variables linked
