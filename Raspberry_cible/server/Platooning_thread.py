@@ -51,7 +51,7 @@ class MyPlatooning(Thread):
                 print('Connected to', splat)
                 
                 #starting Communications Threads
-    			newthread_platoon = MyReceivePlat(splat, self.bus)
+                newthread_platoon = MyReceivePlat(splat, self.bus)
                 newthread_platoon.start()
                 
                 
