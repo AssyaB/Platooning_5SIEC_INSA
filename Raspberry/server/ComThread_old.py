@@ -9,10 +9,6 @@ import struct
 #importing variables linked
 from VarNairobi import *
 
-#importing Communications Threads
-from Platooning_thread import *
-
-
 MCM = 0x010
 MS = 0x100
 US1 = 0x000
@@ -181,76 +177,72 @@ class MyReceive(Thread):
             
             #split each command received if there are more of 1 
             for cmd in data.split(';'):
-            print('val cmd : ',cmd)
-            
-            # don't try an empty command
-            if not cmd: continue 
-            
-            #split the dealed command in header and payload (command = 'header:payload;')
-            header, payload = cmd.split(':')
-            print("header :", header, " payload:", payload)
-            
-            #Deal with the command
-            if (header == 'SPE'):  # speed
-                self.speed_cmd = int(payload)
-                print("speed is updated to ", self.speed_cmd)
-            elif (header == 'STE'):  # steering
-                if (payload == 'left'):
-                    self.turn = -1
-                    self.enable = 1
-                    print("send cmd turn left")
-                elif (payload == 'right'):
-                    self.turn = 1
-                    self.enable = 1
-                    print("send cmd turn right")
-                elif (payload == 'stop'):
-                    self.turn = 0
-                    self.enable = 0
-                    print("send cmd stop to turn")
-            elif (header == 'MOV'):  # move
-                if (payload == 'stop'):
-                    self.move = 0
-                    self.enable = 0
-                    print("send cmd move stop")
-                elif (payload == 'forward'):
-                    print("send cmd move forward")
-                    self.move = 1
-                    self.enable = 1
-                elif (payload == 'backward'):
-                    print("send cmd move backward")
-                    self.move = -1
-                    self.enable = 1
-            elif (header == 'PLA'):
-                if (payload == 'on'):
-                    print("starting platooning mode")
-                    # starting platooning thread
-                    newthreadplat = MyPlatooning(self.bus)
-                    newthreadplat.start()                     
-					#newthreadplat.join()
-                if (payload == b'off'):
-                    print("stopping platooning mode")
+                print('val cmd : ',cmd)
+                
+                # don't try an empty command
+                if not cmd: continue 
+                
+                #split the dealed command in header and payload (command = 'header:payload;')
+                header, payload = cmd.split(':')
+                print("header :", header, " payload:", payload)
+                
+                #Deal with the command
+                if (header == 'SPE'):  # speed
+                    self.speed_cmd = int(payload)
+                    print("speed is updated to ", self.speed_cmd)
+                elif (header == 'STE'):  # steering
+                    if (payload == 'left'):
+                        self.turn = -1
+                        self.enable = 1
+                        print("send cmd turn left")
+                    elif (payload == 'right'):
+                        self.turn = 1
+                        self.enable = 1
+                        print("send cmd turn right")
+                    elif (payload == 'stop'):
+                        self.turn = 0
+                        self.enable = 0
+                        print("send cmd stop to turn")
+                elif (header == 'MOV'):  # move
+                    if (payload == 'stop'):
+                        self.move = 0
+                        self.enable = 0
+                        print("send cmd move stop")
+                    elif (payload == 'forward'):
+                        print("send cmd move forward")
+                        self.move = 1
+                        self.enable = 1
+                    elif (payload == 'backward'):
+                        print("send cmd move backward")
+                        self.move = -1
+                        self.enable = 1
+                elif (header == 'PLA'): #platooning
+                    if (payload == 'on'):
+                        print("starting platooning mode")
+                    if (payload == 'off'):
+                        print("stopping platooning mode")
 
-            print(self.speed_cmd)
-            print(self.move)
-            print(self.turn)
-            print(self.enable)
+                print(self.speed_cmd)
+                print(self.move)
+                print(self.turn)
+                print(self.enable)
 
-            #edition des commandes de mouvement
-            if ~self.move:
-                cmd_mv = (50 + self.move*self.speed_cmd) & ~0x80
-            else:
-                cmd_mv = (50 + self.move*self.speed_cmd) | 0x80
+                #edition des commandes de mouvement
+                if ~self.move:
+                    cmd_mv = (50 + self.move*self.speed_cmd) & ~0x80
+                else:
+                    cmd_mv = (50 + self.move*self.speed_cmd) | 0x80
 
-            if ~self.turn:
-                cmd_turn = 50 +self.turn*20 & 0x80
-            else:
-                cmd_turn = 50 + self.turn*20 | 0x80
+                if ~self.turn:
+                    cmd_turn = 50 +self.turn*20 & 0x80
+                else:
+                    cmd_turn = 50 + self.turn*20 | 0x80
 
-            print("mv:",cmd_mv,"turn:",cmd_turn)
+                print("mv:",cmd_mv,"turn:",cmd_turn)
 
-            msg = can.Message(arbitration_id=MCM,data=[cmd_mv, cmd_mv, cmd_turn,0,0,0,0,0],extended_id=False)
+                msg = can.Message(arbitration_id=MCM,data=[cmd_mv, cmd_mv, cmd_turn,0,0,0,0,0],extended_id=False)
 
-            print(msg)
-            self.bus.send(msg)
+                print(msg)
+                self.bus.send(msg)
 
         self.conn.close()

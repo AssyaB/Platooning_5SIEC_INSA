@@ -8,12 +8,11 @@ import struct
 
 #importing Communications Threads
 from ComThread import *
-from Platooning_thread import *
 
 #importing variables linked
 from VarNairobi import *
 
-HOST = ''                 # Symbolic name meaning all available interfaces
+HOST = ''                # Symbolic name meaning all available interfaces
 PORT = 6666              # Arbitrary non-privileged port
 
 # Echo server program
@@ -40,17 +39,14 @@ if __name__ == "__main__":
     print('Connected by', addr)
 
 
+    #starting Communications Threads
     newthread = MyReceive(conn, bus)
     newthread.start()
     newsend = MySend(conn, bus)
     newsend.start()
     
-    newthreadplat = MyPlatooning(bus)
-    newthreadplat.start()
-    
     newthread.join()
     newsend.join()
-    newthreadplat.join()
     
     print('Bring down CAN0....')
     os.system("sudo ifconfig can0 down")

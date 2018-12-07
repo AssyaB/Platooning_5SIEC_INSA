@@ -1,0 +1,10 @@
+C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA-master\UIGeiCar - Nairobi\UIGeiCar - Nairobi\bin\Debug\UIGeiCar - Nairobi.exe.config
+C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA-master\UIGeiCar - Nairobi\UIGeiCar - Nairobi\bin\Debug\UIGeiCar - Nairobi.exe
+C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA-master\UIGeiCar - Nairobi\UIGeiCar - Nairobi\bin\Debug\UIGeiCar - Nairobi.pdb
+C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA-master\UIGeiCar - Nairobi\UIGeiCar - Nairobi\obj\Debug\UIGeiCar - Nairobi.csprojAssemblyReference.cache
+C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA-master\UIGeiCar - Nairobi\UIGeiCar - Nairobi\obj\Debug\UIGeiCar___Nairobi.Properties.Resources.resources
+C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA-master\UIGeiCar - Nairobi\UIGeiCar - Nairobi\obj\Debug\UIGeiCar___Nairobi.UIGeiCar.resources
+C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA-master\UIGeiCar - Nairobi\UIGeiCar - Nairobi\obj\Debug\UIGeiCar - Nairobi.csproj.GenerateResource.cache
+C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA-master\UIGeiCar - Nairobi\UIGeiCar - Nairobi\obj\Debug\UIGeiCar - Nairobi.csproj.CoreCompileInputs.cache
+C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA-master\UIGeiCar - Nairobi\UIGeiCar - Nairobi\obj\Debug\UIGeiCar - Nairobi.exe
+C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA-master\UIGeiCar - Nairobi\UIGeiCar - Nairobi\obj\Debug\UIGeiCar - Nairobi.pdb
