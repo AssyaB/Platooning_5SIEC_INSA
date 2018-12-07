@@ -8,7 +8,7 @@ import struct
 # Echo server program
 import socket
 
-HOSTPLAT = "10.105.0.53"
+HOSTPLAT = "192.168.137.87"
 PORTPLAT = 7777
 
 #importing variables linked
@@ -48,12 +48,13 @@ class MyPlatooning(Thread):
                 print("Connexion : ", splat)
                 print("type :")
                 type(splat)
+                print('Connected to', splat)
                 
-                newthread_platoon = MyReceivePlat(splat, self.bus)
+                #starting Communications Threads
+    			newthread_platoon = MyReceivePlat(splat, self.bus)
                 newthread_platoon.start()
                 
-                print("Génial on est connecté")
                 
                 newthread_platoon.join()
             except socket.error:
-                print("Cosmic ray detected")
+                print("Connexion error")

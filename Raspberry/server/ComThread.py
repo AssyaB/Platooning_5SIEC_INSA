@@ -9,6 +9,10 @@ import struct
 #importing variables linked
 from VarNairobi import *
 
+#importing Communications Threads
+from Platooning_thread import *
+
+
 MCM = 0x010
 MS = 0x100
 US1 = 0x000
@@ -204,6 +208,10 @@ class MyReceive(Thread):
             elif (header == b'PLA'):
                 if (payload == b'on'):
                     print("starting platooning mode")
+                    # starting platooning thread
+                    newthreadplat = MyPlatooning(self.bus)
+                    newthreadplat.start()                     
+					#newthreadplat.join()
                 if (payload == b'off'):
                     print("stopping platooning mode")
 

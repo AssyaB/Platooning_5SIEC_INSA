@@ -14,7 +14,6 @@ from VarNairobi import *
 
 HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 6666              # Arbitrary non-privileged port
-HOSTPLAT = "10.105.0.53"
 PORTPLAT = 7777
 
 
@@ -55,10 +54,13 @@ if __name__ == "__main__":
     splat.listen(1)
     connplat, addrplat = splat.accept()
     print('Connected by', addrplat)
+
     print("Sock :")
     type(splat)
     print("Conn :")
     type(connplat)
+
+    #starting Communications Thread
     newsendplat = MySend(connplat, bus)
     newsendplat.start()
     

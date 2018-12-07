@@ -5,37 +5,55 @@ import can
 import os
 import struct
 
-HOST = ''# Symbolic name meaning all available interfaces
-HOSTPLAT = "10.105.1.85"
-PORT = 6666              # Arbitrary non-privileged port
+# Echo server program
+import socket
+
 PORTPLAT = 7777
+
+#importing variables linked
+from VarNairobi import *
+
+class MyReceivePlat(Thread):
+    
+    def __init__(self, splat, bus):
+        Thread.__init__(self)
+        self.bus = bus
+        self.sock = splat
+        
+    def run(self):
+        while True :
+            data = self.sock.recv(1024)
+            
+            if not data: break
+                
+            print('Received', repr(data))
+        
+        self.connplat.close()
+
 
 
 class MyPlatooning(Thread):
 
-    def __init__(self,conn, bus):
+    def __init__(self,bus):
         Thread.__init__(self)
-        self.conn = conn
         self.bus = bus
 
     def run(self):
         while True :
 
-            try:
-                bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
-            except OSError:
-                print('Cannot find PiCAN board.')
-                exit()
-
             splat = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            splat.connect(HOSTPLAT, PORTPLAT)
-            
-            print('Connected by', addr)
-            
-            newthread_platoon = MyReceive(conn, bus)
-            newthread_platoon.start()
-            newsend_platoon = MySend(conn, bus)
-            newsend_platoon.start()
-
-            newthread_platoon.join()
-            newsend_platoon.join()
+            try:
+                splat.connect((HOSTPLAT, PORTPLAT))
+                print("Connexion : ", splat)
+                print("type :")
+                type(splat)
+                print('Connected to', splat)
+                
+                #starting Communications Threads
+    			newthread_platoon = MyReceivePlat(splat, self.bus)
+                newthread_platoon.start()
+                
+                
+                newthread_platoon.join()
+            except socket.error:
+                print("Connexion error")
