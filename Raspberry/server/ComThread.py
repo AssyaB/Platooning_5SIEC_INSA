@@ -176,7 +176,8 @@ class MyReceive(Thread):
 
         while True :
             data = self.conn.recv(1024)
-
+            data = str(data)
+            data = data[2:len(data)-1] # suppress "b'" and "'" in data frame to deal with the command (TO DO : see where it comes from)
             if not data: break
             
             #split each command received if there are more of 1 
