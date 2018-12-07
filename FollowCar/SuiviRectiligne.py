@@ -17,6 +17,19 @@ US2 = 0x001
 OM1 = 0x101
 OM2 = 0x102
 
+
+bestQuality = 0
+speed = 0
+bestDistance = 7000
+i = 0
+Kp = 0.03
+Kd = 0.09
+
+
+previousErrorDistance = 0
+sumErrors = 0
+
+
 PORT_NAME = '/dev/ttyUSB0'
 lidar = RPLidar(PORT_NAME)
 
@@ -34,27 +47,26 @@ if __name__ == '__main__':
         print('Cannot find PiCAN board.')
         exit()
 
-    bestQuality = 0
-    speed = 0
-    bestDistance = 7000
-    i = 0
-
     try:
         print('Recording measurments... Press Crl+C to stop.')
         #print('Recording measurments...')
         for new_scan, quality, angle, distance in lidar.iter_measurments():
 	
         #Filtrage des donnees recuperees par le lidar
-            if quality!=0 and 168 <=angle and angle<= 192:
+            if quality!=0 and 172 <=angle and angle<= 188:
                 if quality > bestQuality:
                     bestQuality = quality
                     if distance < bestDistance:
-                        bestDistance = distance
+                        bestDistance = int(distance)
                 i=1	
            #Calcul de la vitesse			
             elif angle > 198 and i==1:
 	           #Refaire les mesures de vitesse pour obtenir un meilleur coefficient
-                boost = int((bestDistance-2000)*0.055) 
+                errorDistance = bestDistance - 2000
+                variationError = errorDistance - previousErrorDistance
+                boost = (errorDistance * Kp) + (Kd * variationError)	
+                previousErrorDistance = errorDistance
+                boost = int(boost)
                 speed = speed + boost
                 if speed<=0:
                     speed = 0
