@@ -17,6 +17,7 @@ namespace UIGeiCar___Nairobi
         NetworkStream nwStream;
         Boolean bConnected = false;
         Boolean platooning_mode = false;
+        Boolean waiting_mode = false;
 
         public UIGeiCar()
         {
@@ -123,6 +124,9 @@ namespace UIGeiCar___Nairobi
                             case "PIT":
                                 ePITCH.Text = elt[1];
                                 break;
+                            case "LID":
+                                eLIDAR.Text = elt[1];
+                                break;
                             default:
                                 cmpt = (cmpt + 1) % 100;
                                 break;
@@ -172,7 +176,7 @@ namespace UIGeiCar___Nairobi
         {
             if (bConnected)
             {
-                byte[] bytes = Encoding.ASCII.GetBytes("STE" + "right");
+                byte[] bytes = Encoding.ASCII.GetBytes("STE:" + "right;");
                 nwStream.Write(bytes, 0, bytes.Length);
             }
         }
@@ -181,7 +185,7 @@ namespace UIGeiCar___Nairobi
         {
             if (bConnected)
             {
-                byte[] bytes = Encoding.ASCII.GetBytes("MOV" + "backward");
+                byte[] bytes = Encoding.ASCII.GetBytes("MOV:" + "backward;");
                 nwStream.Write(bytes, 0, bytes.Length);
             }
         }
@@ -190,7 +194,7 @@ namespace UIGeiCar___Nairobi
         {
             if (bConnected)
             {
-                byte[] bytes = Encoding.ASCII.GetBytes("STE" + "left");
+                byte[] bytes = Encoding.ASCII.GetBytes("STE:" + "left;");
                 nwStream.Write(bytes, 0, bytes.Length);
             }
         }
@@ -199,7 +203,7 @@ namespace UIGeiCar___Nairobi
         {
             if (bConnected)
             {
-                byte[] bytes = Encoding.ASCII.GetBytes("MOV" + "forward");
+                byte[] bytes = Encoding.ASCII.GetBytes("MOV:" + "forward;");
                 nwStream.Write(bytes, 0, bytes.Length);
             }
         }
@@ -208,7 +212,7 @@ namespace UIGeiCar___Nairobi
         {
             if (bConnected)
             {
-                byte[] bytes = Encoding.ASCII.GetBytes("STE" + "stop");
+                byte[] bytes = Encoding.ASCII.GetBytes("STE:" + "stop;");
                 nwStream.Write(bytes, 0, bytes.Length);
             }
         }
@@ -217,29 +221,29 @@ namespace UIGeiCar___Nairobi
         {
             if (bConnected)
             {
-                byte[] bytes = Encoding.ASCII.GetBytes("MOV" + "stop");
+                byte[] bytes = Encoding.ASCII.GetBytes("MOV:" + "stop;");
                 nwStream.Write(bytes, 0, bytes.Length);
             }
         }
         
         private void UIGeiCar_KeyDown(object sender, KeyEventArgs e)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes("STE" + "stop");
+            byte[] bytes = Encoding.ASCII.GetBytes("STE:" + "stop;");
             if (bConnected)
             {
                 switch (e.KeyCode)
                 {
                     case Keys.Down:
-                        bytes = Encoding.ASCII.GetBytes("MOV" + "backward");
+                        bytes = Encoding.ASCII.GetBytes("MOV:" + "backward;");
                         break;
                     case Keys.Up:
-                        bytes = Encoding.ASCII.GetBytes("MOV" + "forward");
+                        bytes = Encoding.ASCII.GetBytes("MOV:" + "forward;");
                         break;
                     case Keys.Left:
-                        bytes = Encoding.ASCII.GetBytes("STE" + "left");
+                        bytes = Encoding.ASCII.GetBytes("STE:" + "left;");
                         break;
                     case Keys.Right:
-                        bytes = Encoding.ASCII.GetBytes("STE" + "right");
+                        bytes = Encoding.ASCII.GetBytes("STE:" + "right;");
                         break;
                 }
                 nwStream.Write(bytes, 0, bytes.Length);
@@ -248,18 +252,18 @@ namespace UIGeiCar___Nairobi
 
         private void UIGeiCar_KeyUp(object sender, KeyEventArgs e)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes("STE" + "stop");
+            byte[] bytes = Encoding.ASCII.GetBytes("STE:" + "stop;");
             if (bConnected)
             {
                 switch (e.KeyCode)
                 {
                     case Keys.Down:
                     case Keys.Up:
-                        bytes = Encoding.ASCII.GetBytes("MOV" + "stop");
+                        bytes = Encoding.ASCII.GetBytes("MOV:" + "stop;");
                         break;
                     case Keys.Left:
                     case Keys.Right:
-                        bytes = Encoding.ASCII.GetBytes("STE" + "stop");
+                        bytes = Encoding.ASCII.GetBytes("STE:" + "stop;");
                         break;
                 }
                 nwStream.Write(bytes, 0, bytes.Length);
@@ -273,29 +277,29 @@ namespace UIGeiCar___Nairobi
 
         private void SpdBar_ValueChanged(object sender, EventArgs e)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes("SPE" + SpdBar.Value.ToString());
+            byte[] bytes = Encoding.ASCII.GetBytes("SPE:" + SpdBar.Value.ToString() + ";");
             nwStream.Write(bytes, 0, bytes.Length);
             eSPD.Text = SpdBar.Value.ToString();
         }
 
         private void KbCtrl_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes("STE" + "stop");
+            byte[] bytes = Encoding.ASCII.GetBytes("STE:" + "stop;");
             if (bConnected)
             {
                 switch (e.KeyCode)
                 {
                     case Keys.Down:
-                        bytes = Encoding.ASCII.GetBytes("MOV" + "backward");
+                        bytes = Encoding.ASCII.GetBytes("MOV:" + "backward;");
                         break;
                     case Keys.Up:
-                        bytes = Encoding.ASCII.GetBytes("MOV" + "forward");
+                        bytes = Encoding.ASCII.GetBytes("MOV:" + "forward;");
                         break;
                     case Keys.Left:
-                        bytes = Encoding.ASCII.GetBytes("STE" + "left");
+                        bytes = Encoding.ASCII.GetBytes("STE:" + "left;");
                         break;
                     case Keys.Right:
-                        bytes = Encoding.ASCII.GetBytes("STE" + "right");
+                        bytes = Encoding.ASCII.GetBytes("STE:" + "right;");
                         break;
                 }
                 nwStream.Write(bytes, 0, bytes.Length);
@@ -306,22 +310,39 @@ namespace UIGeiCar___Nairobi
         {
             if (bConnected)
             {
-                if (platooning_mode == false)
+                if (platooning_mode == false && waiting_mode == false)
                 {
-                    byte[] bytes = Encoding.ASCII.GetBytes("PLA" + "on");
-                    BmodePlatooning.BackgroundImage = Properties.Resources.ON;
+                    byte[] bytes = Encoding.ASCII.GetBytes("PLA:" + "on;");
+                    BmodePlatooning.BackgroundImage = Properties.Resources.wait;
                     nwStream.Write(bytes, 0, bytes.Length);
-                    platooning_mode = true;
-                    BmodePlatooning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                    platooning_mode = false;
+                    waiting_mode = true;
+                    ILIDAR.Visible = true;
+                    eLIDAR.Visible = true;
+                    BPlat_accept.Enabled = true;
+                    BPlat_refuse.Enabled = true;
+                    BPlat_accept.Visible = true;
+                    BPlat_refuse.Visible = true;
+                    //BmodePlatooning.BackgroundImageLayout =;
                 }
                 else
                 {
-                    byte[] bytes = Encoding.ASCII.GetBytes("PLA" + "off");
-                    BmodePlatooning.BackgroundImage = Properties.Resources.OFF;
-                    nwStream.Write(bytes, 0, bytes.Length);
-                    platooning_mode = false;
-                    BmodePlatooning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                    if(platooning_mode == true || waiting_mode == true)
+                    {
+                        byte[] bytes = Encoding.ASCII.GetBytes("PLA:" + "off;");
+                        BmodePlatooning.BackgroundImage = Properties.Resources.OFF;
+                        nwStream.Write(bytes, 0, bytes.Length);
+                        platooning_mode = false;
+                        waiting_mode = false;
+                        ILIDAR.Visible = false;
+                        eLIDAR.Visible = false;
+                        BPlat_accept.Enabled = false;
+                        BPlat_refuse.Enabled = false;
+                        BPlat_accept.Visible = false;
+                        BPlat_refuse.Visible = false;
+                    }
                 }
+
             }
         }
 
@@ -341,6 +362,40 @@ namespace UIGeiCar___Nairobi
                 bConnected = true;
                 bconnect.Text = "Failed to disconnect";
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void BPlat_accept_Click(object sender, EventArgs e)
+        {
+            if (waiting_mode == true)
+            {
+                byte[] bytes = Encoding.ASCII.GetBytes("PLA:" + "yes;");
+                BmodePlatooning.BackgroundImage = Properties.Resources.ON;
+                nwStream.Write(bytes, 0, bytes.Length);
+                waiting_mode = false;
+                platooning_mode = true;
+                ILIDAR.Visible = true;
+                eLIDAR.Visible = true;
+                BPlat_accept.Enabled = false;
+                BPlat_refuse.Enabled = false;
+                BPlat_accept.Visible = false;
+                BPlat_refuse.Visible = false;
+            }
+        }
+
+        private void BPlat_refuse_Click(object sender, EventArgs e)
+        {
+            if (waiting_mode == true)
+            {
+                byte[] bytes = Encoding.ASCII.GetBytes("PLA:" + "no;");
+                BmodePlatooning.BackgroundImage = Properties.Resources.wait;
+                nwStream.Write(bytes, 0, bytes.Length);
+                ILIDAR.Visible = true;
+                eLIDAR.Visible = true;
+                BPlat_accept.Enabled = true;
+                BPlat_refuse.Enabled = true;
+                BPlat_accept.Visible = true;
+                BPlat_refuse.Visible = true;
             }
         }
     }

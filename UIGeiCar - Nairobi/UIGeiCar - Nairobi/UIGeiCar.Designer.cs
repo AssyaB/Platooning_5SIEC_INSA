@@ -53,7 +53,6 @@
             this.bbackward = new System.Windows.Forms.Button();
             this.bstopSTE = new System.Windows.Forms.Button();
             this.bstopMOV = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.eBAT = new System.Windows.Forms.Label();
             this.ePOS = new System.Windows.Forms.Label();
             this.eSPL = new System.Windows.Forms.Label();
@@ -73,9 +72,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BmodePlatooning = new System.Windows.Forms.Button();
             this.bdisconnect = new System.Windows.Forms.Button();
+            this.BPlat_accept = new System.Windows.Forms.Button();
+            this.BPlat_refuse = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ILIDAR = new System.Windows.Forms.Label();
+            this.eLIDAR = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SpdBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.infoLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSpeed
@@ -321,16 +325,6 @@
             this.bstopMOV.UseVisualStyleBackColor = true;
             this.bstopMOV.Click += new System.EventHandler(this.BstopMOV_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(219, 117);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(72, 122);
-            this.pictureBox1.TabIndex = 44;
-            this.pictureBox1.TabStop = false;
-            // 
             // eBAT
             // 
             this.eBAT.AutoSize = true;
@@ -531,11 +525,73 @@
             this.bdisconnect.UseVisualStyleBackColor = false;
             this.bdisconnect.Click += new System.EventHandler(this.Bdisconnect_Click);
             // 
+            // BPlat_accept
+            // 
+            this.BPlat_accept.BackColor = System.Drawing.Color.Lime;
+            this.BPlat_accept.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BPlat_accept.Location = new System.Drawing.Point(457, 357);
+            this.BPlat_accept.Name = "BPlat_accept";
+            this.BPlat_accept.Size = new System.Drawing.Size(98, 36);
+            this.BPlat_accept.TabIndex = 64;
+            this.BPlat_accept.Text = "ACCEPT";
+            this.BPlat_accept.UseVisualStyleBackColor = false;
+            this.BPlat_accept.Visible = false;
+            this.BPlat_accept.Click += new System.EventHandler(this.BPlat_accept_Click);
+            // 
+            // BPlat_refuse
+            // 
+            this.BPlat_refuse.BackColor = System.Drawing.Color.Red;
+            this.BPlat_refuse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BPlat_refuse.Location = new System.Drawing.Point(588, 357);
+            this.BPlat_refuse.Name = "BPlat_refuse";
+            this.BPlat_refuse.Size = new System.Drawing.Size(96, 36);
+            this.BPlat_refuse.TabIndex = 65;
+            this.BPlat_refuse.Text = "REFUSE";
+            this.BPlat_refuse.UseVisualStyleBackColor = false;
+            this.BPlat_refuse.Visible = false;
+            this.BPlat_refuse.Click += new System.EventHandler(this.BPlat_refuse_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(219, 117);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(72, 122);
+            this.pictureBox1.TabIndex = 44;
+            this.pictureBox1.TabStop = false;
+            // 
+            // ILIDAR
+            // 
+            this.ILIDAR.AutoSize = true;
+            this.ILIDAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ILIDAR.Location = new System.Drawing.Point(485, 315);
+            this.ILIDAR.Name = "ILIDAR";
+            this.ILIDAR.Size = new System.Drawing.Size(126, 20);
+            this.ILIDAR.TabIndex = 68;
+            this.ILIDAR.Text = "Distance (cm) :";
+            this.ILIDAR.Visible = false;
+            // 
+            // eLIDAR
+            // 
+            this.eLIDAR.BackColor = System.Drawing.SystemColors.Control;
+            this.eLIDAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eLIDAR.Location = new System.Drawing.Point(617, 313);
+            this.eLIDAR.Name = "eLIDAR";
+            this.eLIDAR.Size = new System.Drawing.Size(65, 23);
+            this.eLIDAR.TabIndex = 69;
+            this.eLIDAR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.eLIDAR.Visible = false;
+            // 
             // UIGeiCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 434);
+            this.Controls.Add(this.eLIDAR);
+            this.Controls.Add(this.ILIDAR);
+            this.Controls.Add(this.BPlat_refuse);
+            this.Controls.Add(this.BPlat_accept);
             this.Controls.Add(this.bdisconnect);
             this.Controls.Add(this.BmodePlatooning);
             this.Controls.Add(this.label1);
@@ -586,9 +642,9 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.SpdBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.infoLayout.ResumeLayout(false);
             this.infoLayout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -639,6 +695,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BmodePlatooning;
         private System.Windows.Forms.Button bdisconnect;
+        private System.Windows.Forms.Button BPlat_accept;
+        private System.Windows.Forms.Button BPlat_refuse;
+        private System.Windows.Forms.Label ILIDAR;
+        private System.Windows.Forms.Label eLIDAR;
     }
 }
 
