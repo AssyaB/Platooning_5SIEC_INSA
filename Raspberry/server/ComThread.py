@@ -229,7 +229,7 @@ class MyReceive(Thread):
                         newthreadplat = MyPlatooning(self.bus)
                         newthreadplat.start()                     
 					    #newthreadplat.join()
-                    if (payload == b'off'):
+                    if (payload == 'off'):
                         print("stopping platooning mode")
 
                 print(self.speed_cmd)
