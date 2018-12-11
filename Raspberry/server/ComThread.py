@@ -20,7 +20,7 @@ US2 = 0x001
 OM1 = 0x101
 OM2 = 0x102
 
-DistanceLidar = 500
+DistanceLidar = 2000
 '''
  Messages envoyés :
     - ultrason avant gauche
