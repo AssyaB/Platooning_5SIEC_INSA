@@ -223,7 +223,7 @@ class MyReceive(Thread):
                         self.move = -1
                         self.enable = 1
                 elif (header == 'PLA'):
-                    if (payload == 'on'):
+                    if (payload == 'yes'):
                         print("starting platooning mode")
                         # starting platooning thread
                         newthreadplat = MyPlatooning(self.bus)

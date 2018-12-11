@@ -126,9 +126,9 @@ namespace UIGeiCar___Nairobi
                                 break;
                             case "LID":
                                 int dist_lidar = Int32.Parse(elt[1]);
-                                if (dist_lidar != 0 && dist_lidar <= 4000 && waiting_mode == true)
+                                eLIDAR.Text = elt[1];
+                                if (dist_lidar >= 1500 && dist_lidar <= 4000 && waiting_mode == true)
                                 {
-                                    eLIDAR.Text = elt[1];
                                     Choice_lidar();
                                 }
                                 break;
