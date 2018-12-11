@@ -170,6 +170,8 @@ class MyReceive(Thread):
 
         while True :
             data = self.conn.recv(1024)
+            data = str(data)
+            data = data[2:len(data)-1]
 
             if not data: break
             
