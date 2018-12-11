@@ -1,4 +1,4 @@
-ComThread# coding: utf-8
+# coding: utf-8
 
 from threading import Thread
 import time
