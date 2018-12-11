@@ -170,6 +170,8 @@ class MyReceive(Thread):
 
         while True :
             data = self.conn.recv(1024)
+            data = str(data)
+            data = data[2:len(data)-1]
 
             if not data: break
             
@@ -226,12 +228,12 @@ class MyReceive(Thread):
                 print(self.enable)
 
                 #edition des commandes de mouvement
-                if ~self.move:
+                if self.move == 0:
                     cmd_mv = (50 + self.move*self.speed_cmd) & ~0x80
                 else:
                     cmd_mv = (50 + self.move*self.speed_cmd) | 0x80
 
-                if ~self.turn:
+                if self.turn == 0:
                     cmd_turn = 50 +self.turn*20 & 0x80
                 else:
                     cmd_turn = 50 + self.turn*20 | 0x80
