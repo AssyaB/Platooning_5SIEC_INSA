@@ -15,6 +15,8 @@ import VarNairobi as VN
 #importing LidarRegul.py for our regulation
 from LidarRegul import *
 
+#importing Communications Threads
+#from Platooning_thread import *
 
 HOST = ''                # Symbolic name meaning all available interfaces
 PORT = 6666              # Arbitrary non-privileged port
@@ -50,19 +52,17 @@ if __name__ == "__main__":
         newsend = MySend(VN.conn, bus)
         newsend.setName('Th-Sender')
         newsend.start()
-        
+        '''
         #starting platooning thread
         newthreadplat = MyPlatooning(bus)
         newthreadplat.setName('Th-Platooning')
         newthreadplat.start()
-        
+        '''
         #starting Lidar and regulation threads
-        newLidar = Lidar_thread()
+        newLidar = Lidar_thread(bus)
         newLidar.setName('Th-Lidar')
         newLidar.start()
-        newRegul = commande_LIDAR(bus)
-        newRegul.setName('Th-Regul')
-    
+        
     except KeyboardInterrupt:#To finish : Stop correctly all the threads
         VN.stop_all.set()
         VN.exit_lidar.set()
@@ -70,10 +70,11 @@ if __name__ == "__main__":
     
     newthread.join()
     newsend.join()
-    newLidar.join()
-    newRegul.join()
-    newthreadplat.join()
     
+    newLidar.join()
+    '''
+    newthreadplat.join()
+    '''
     print('Bring down CAN0....')
     os.system("sudo ifconfig can0 down")
     time.sleep(0.1)

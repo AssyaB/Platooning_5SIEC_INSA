@@ -212,12 +212,12 @@ class MyReceive(Thread):
                         print("send cmd turn right")
                     elif (payload == 'stop'):
                         self.turn = 0
-                        self.enable = 0
+                        self.enable = 1
                         print("send cmd stop to turn")
                 elif (header == 'MOV'):  # move
                     if (payload == 'stop'):
                         self.move = 0
-                        self.enable = 0
+                        self.enable = 1
                         print("send cmd move stop")
                     elif (payload == 'forward'):
                         print("send cmd move forward")
@@ -258,6 +258,7 @@ class MyReceive(Thread):
                             cmd_turn = 100
                         else:
                             cmd_turn = 0
+                        cmd_turn |= 0x80
                         #cmd_turn = 50 + self.turn*20 | 0x80
                     #Recap
                     print("mv:",cmd_mv,"turn:",cmd_turn)
