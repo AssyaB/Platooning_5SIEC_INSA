@@ -69,22 +69,11 @@
             this.eUSFL = new System.Windows.Forms.Label();
             this.eSPD = new System.Windows.Forms.Label();
             this.kbCtrl = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.bdisconnect = new System.Windows.Forms.Button();
-            this.BPlat_accept = new System.Windows.Forms.Button();
-            this.BPlat_refuse = new System.Windows.Forms.Button();
-            this.ILIDAR = new System.Windows.Forms.Label();
-            this.eLIDAR = new System.Windows.Forms.Label();
-            this.car_detected = new System.Windows.Forms.Label();
-            this.BmodePlatooning = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.IWARNING = new System.Windows.Forms.PictureBox();
-            this.eWARNING_obstacle = new System.Windows.Forms.Label();
-            this.eWARNING_car_lost = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SpdBar)).BeginInit();
             this.infoLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IWARNING)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSpeed
@@ -234,6 +223,7 @@
             this.bconnect.Name = "bconnect";
             this.bconnect.Size = new System.Drawing.Size(100, 28);
             this.bconnect.TabIndex = 0;
+            this.bconnect.TabStop = false;
             this.bconnect.Text = "Connect";
             this.bconnect.UseVisualStyleBackColor = true;
             this.bconnect.Click += new System.EventHandler(this.Bconnect_Click);
@@ -245,6 +235,7 @@
             this.ip.Name = "ip";
             this.ip.Size = new System.Drawing.Size(235, 22);
             this.ip.TabIndex = 1;
+            this.ip.TabStop = false;
             // 
             // SpdBar
             // 
@@ -255,6 +246,7 @@
             this.SpdBar.Name = "SpdBar";
             this.SpdBar.Size = new System.Drawing.Size(139, 56);
             this.SpdBar.TabIndex = 2;
+            this.SpdBar.TabStop = false;
             this.SpdBar.Value = 10;
             this.SpdBar.ValueChanged += new System.EventHandler(this.SpdBar_ValueChanged);
             // 
@@ -266,6 +258,7 @@
             this.bforward.Name = "bforward";
             this.bforward.Size = new System.Drawing.Size(100, 28);
             this.bforward.TabIndex = 3;
+            this.bforward.TabStop = false;
             this.bforward.Text = "Forward";
             this.bforward.UseVisualStyleBackColor = true;
             this.bforward.Click += new System.EventHandler(this.Bforward_Click);
@@ -278,6 +271,7 @@
             this.bright.Name = "bright";
             this.bright.Size = new System.Drawing.Size(100, 28);
             this.bright.TabIndex = 4;
+            this.bright.TabStop = false;
             this.bright.Text = "Right";
             this.bright.UseVisualStyleBackColor = true;
             this.bright.Click += new System.EventHandler(this.Bright_Click);
@@ -290,6 +284,7 @@
             this.bleft.Name = "bleft";
             this.bleft.Size = new System.Drawing.Size(100, 28);
             this.bleft.TabIndex = 5;
+            this.bleft.TabStop = false;
             this.bleft.Text = "Left";
             this.bleft.UseVisualStyleBackColor = true;
             this.bleft.Click += new System.EventHandler(this.Bleft_Click);
@@ -302,6 +297,7 @@
             this.bbackward.Name = "bbackward";
             this.bbackward.Size = new System.Drawing.Size(100, 28);
             this.bbackward.TabIndex = 6;
+            this.bbackward.TabStop = false;
             this.bbackward.Text = "Backward";
             this.bbackward.UseVisualStyleBackColor = true;
             this.bbackward.Click += new System.EventHandler(this.Bbackward_Click);
@@ -314,6 +310,7 @@
             this.bstopSTE.Name = "bstopSTE";
             this.bstopSTE.Size = new System.Drawing.Size(139, 28);
             this.bstopSTE.TabIndex = 7;
+            this.bstopSTE.TabStop = false;
             this.bstopSTE.Text = "Stop Rot.";
             this.bstopSTE.UseVisualStyleBackColor = true;
             this.bstopSTE.Click += new System.EventHandler(this.BstopSTE_Click);
@@ -326,6 +323,7 @@
             this.bstopMOV.Name = "bstopMOV";
             this.bstopMOV.Size = new System.Drawing.Size(139, 28);
             this.bstopMOV.TabIndex = 8;
+            this.bstopMOV.TabStop = false;
             this.bstopMOV.Text = "Stop Mov.";
             this.bstopMOV.UseVisualStyleBackColor = true;
             this.bstopMOV.Click += new System.EventHandler(this.BstopMOV_Click);
@@ -486,22 +484,12 @@
             this.kbCtrl.Name = "kbCtrl";
             this.kbCtrl.Size = new System.Drawing.Size(149, 28);
             this.kbCtrl.TabIndex = 60;
+            this.kbCtrl.TabStop = false;
             this.kbCtrl.Text = "KeyBoard Control";
             this.kbCtrl.UseVisualStyleBackColor = true;
             this.kbCtrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyDown);
             this.kbCtrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyUp);
             this.kbCtrl.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.KbCtrl_PreviewKeyDown);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 306);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(199, 32);
-            this.label1.TabIndex = 61;
-            this.label1.Text = "PLATOONING";
             // 
             // bdisconnect
             // 
@@ -514,80 +502,10 @@
             this.bdisconnect.Name = "bdisconnect";
             this.bdisconnect.Size = new System.Drawing.Size(100, 28);
             this.bdisconnect.TabIndex = 63;
+            this.bdisconnect.TabStop = false;
             this.bdisconnect.Text = "Disconnect";
             this.bdisconnect.UseVisualStyleBackColor = false;
             this.bdisconnect.Click += new System.EventHandler(this.Bdisconnect_Click);
-            // 
-            // BPlat_accept
-            // 
-            this.BPlat_accept.BackColor = System.Drawing.Color.Lime;
-            this.BPlat_accept.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BPlat_accept.Location = new System.Drawing.Point(457, 372);
-            this.BPlat_accept.Name = "BPlat_accept";
-            this.BPlat_accept.Size = new System.Drawing.Size(98, 36);
-            this.BPlat_accept.TabIndex = 64;
-            this.BPlat_accept.Text = "ACCEPT";
-            this.BPlat_accept.UseVisualStyleBackColor = false;
-            this.BPlat_accept.Visible = false;
-            this.BPlat_accept.Click += new System.EventHandler(this.BPlat_accept_Click);
-            // 
-            // BPlat_refuse
-            // 
-            this.BPlat_refuse.BackColor = System.Drawing.Color.Red;
-            this.BPlat_refuse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BPlat_refuse.Location = new System.Drawing.Point(586, 372);
-            this.BPlat_refuse.Name = "BPlat_refuse";
-            this.BPlat_refuse.Size = new System.Drawing.Size(96, 36);
-            this.BPlat_refuse.TabIndex = 65;
-            this.BPlat_refuse.Text = "REFUSE";
-            this.BPlat_refuse.UseVisualStyleBackColor = false;
-            this.BPlat_refuse.Visible = false;
-            this.BPlat_refuse.Click += new System.EventHandler(this.BPlat_refuse_Click);
-            // 
-            // ILIDAR
-            // 
-            this.ILIDAR.AutoSize = true;
-            this.ILIDAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ILIDAR.Location = new System.Drawing.Point(473, 341);
-            this.ILIDAR.Name = "ILIDAR";
-            this.ILIDAR.Size = new System.Drawing.Size(126, 20);
-            this.ILIDAR.TabIndex = 68;
-            this.ILIDAR.Text = "Distance (cm) :";
-            this.ILIDAR.Visible = false;
-            // 
-            // eLIDAR
-            // 
-            this.eLIDAR.BackColor = System.Drawing.SystemColors.Control;
-            this.eLIDAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eLIDAR.Location = new System.Drawing.Point(605, 339);
-            this.eLIDAR.Name = "eLIDAR";
-            this.eLIDAR.Size = new System.Drawing.Size(65, 23);
-            this.eLIDAR.TabIndex = 69;
-            this.eLIDAR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.eLIDAR.Visible = false;
-            // 
-            // car_detected
-            // 
-            this.car_detected.AutoSize = true;
-            this.car_detected.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.car_detected.Location = new System.Drawing.Point(410, 294);
-            this.car_detected.Name = "car_detected";
-            this.car_detected.Size = new System.Drawing.Size(323, 44);
-            this.car_detected.TabIndex = 70;
-            this.car_detected.Text = "CAR DETECTED";
-            this.car_detected.Visible = false;
-            // 
-            // BmodePlatooning
-            // 
-            this.BmodePlatooning.AutoSize = true;
-            this.BmodePlatooning.BackgroundImage = global::UIGeiCar___Nairobi.Properties.Resources.OFF;
-            this.BmodePlatooning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BmodePlatooning.Location = new System.Drawing.Point(50, 352);
-            this.BmodePlatooning.Name = "BmodePlatooning";
-            this.BmodePlatooning.Size = new System.Drawing.Size(188, 70);
-            this.BmodePlatooning.TabIndex = 62;
-            this.BmodePlatooning.UseVisualStyleBackColor = true;
-            this.BmodePlatooning.Click += new System.EventHandler(this.BmodePlatooning_Click);
             // 
             // pictureBox1
             // 
@@ -599,57 +517,13 @@
             this.pictureBox1.TabIndex = 44;
             this.pictureBox1.TabStop = false;
             // 
-            // IWARNING
-            // 
-            this.IWARNING.BackColor = System.Drawing.Color.Transparent;
-            this.IWARNING.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.IWARNING.Image = global::UIGeiCar___Nairobi.Properties.Resources.attention1;
-            this.IWARNING.Location = new System.Drawing.Point(274, 292);
-            this.IWARNING.Name = "IWARNING";
-            this.IWARNING.Size = new System.Drawing.Size(115, 115);
-            this.IWARNING.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.IWARNING.TabIndex = 71;
-            this.IWARNING.TabStop = false;
-            this.IWARNING.Visible = false;
-            // 
-            // eWARNING_obstacle
-            // 
-            this.eWARNING_obstacle.AutoSize = true;
-            this.eWARNING_obstacle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eWARNING_obstacle.Location = new System.Drawing.Point(256, 393);
-            this.eWARNING_obstacle.Name = "eWARNING_obstacle";
-            this.eWARNING_obstacle.Size = new System.Drawing.Size(149, 29);
-            this.eWARNING_obstacle.TabIndex = 72;
-            this.eWARNING_obstacle.Text = "OBSTACLE";
-            this.eWARNING_obstacle.Visible = false;
-            // 
-            // eWARNING_car_lost
-            // 
-            this.eWARNING_car_lost.AutoSize = true;
-            this.eWARNING_car_lost.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eWARNING_car_lost.Location = new System.Drawing.Point(265, 393);
-            this.eWARNING_car_lost.Name = "eWARNING_car_lost";
-            this.eWARNING_car_lost.Size = new System.Drawing.Size(140, 29);
-            this.eWARNING_car_lost.TabIndex = 73;
-            this.eWARNING_car_lost.Text = "CAR LOST";
-            this.eWARNING_car_lost.Visible = false;
-            // 
             // UIGeiCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 434);
-            this.Controls.Add(this.eWARNING_car_lost);
-            this.Controls.Add(this.eWARNING_obstacle);
-            this.Controls.Add(this.IWARNING);
-            this.Controls.Add(this.car_detected);
-            this.Controls.Add(this.eLIDAR);
-            this.Controls.Add(this.ILIDAR);
-            this.Controls.Add(this.BPlat_refuse);
-            this.Controls.Add(this.BPlat_accept);
+            this.BackColor = System.Drawing.Color.HotPink;
+            this.ClientSize = new System.Drawing.Size(771, 333);
             this.Controls.Add(this.bdisconnect);
-            this.Controls.Add(this.BmodePlatooning);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.kbCtrl);
             this.Controls.Add(this.eSPD);
             this.Controls.Add(this.eUSFL);
@@ -692,7 +566,7 @@
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UIGeiCar";
-            this.Text = "GeiCar";
+            this.Text = "GeiCar_Cible";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UIGeiCar_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyUp);
@@ -700,7 +574,6 @@
             this.infoLayout.ResumeLayout(false);
             this.infoLayout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IWARNING)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -748,16 +621,6 @@
         private System.Windows.Forms.Panel infoLayout;
         private System.Windows.Forms.Label eSPD;
         private System.Windows.Forms.Button kbCtrl;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button BmodePlatooning;
         private System.Windows.Forms.Button bdisconnect;
-        private System.Windows.Forms.Button BPlat_accept;
-        private System.Windows.Forms.Button BPlat_refuse;
-        private System.Windows.Forms.Label ILIDAR;
-        private System.Windows.Forms.Label eLIDAR;
-        private System.Windows.Forms.Label car_detected;
-        private System.Windows.Forms.PictureBox IWARNING;
-        private System.Windows.Forms.Label eWARNING_obstacle;
-        private System.Windows.Forms.Label eWARNING_car_lost;
     }
 }
