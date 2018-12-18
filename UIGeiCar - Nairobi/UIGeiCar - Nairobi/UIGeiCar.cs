@@ -126,8 +126,10 @@ namespace UIGeiCar___Nairobi
                                 break;
                             case "LID":
                                 int dist_lidar = Int32.Parse(elt[1]);
-                                eLIDAR.Text = elt[1];
-                                if (dist_lidar >= 1500 && dist_lidar <= 4000 && waiting_mode == true)
+                                dist_lidar = dist_lidar - 1000; //Real distance in mm
+                                string dist = String.Concat(dist_lidar);
+                                eLIDAR.Text = dist;
+                                if (dist_lidar >= 100 && dist_lidar <= 4000 && waiting_mode == true)
                                 {
                                     Display_label_on();
                                 }
@@ -437,6 +439,6 @@ namespace UIGeiCar___Nairobi
             nwStream.Write(bytes, 0, bytes.Length);
             platooning_mode = false;
             waiting_mode = false;
-        }        
+        }
     }
 }

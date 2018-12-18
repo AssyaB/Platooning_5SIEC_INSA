@@ -550,9 +550,9 @@
             this.ILIDAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ILIDAR.Location = new System.Drawing.Point(473, 341);
             this.ILIDAR.Name = "ILIDAR";
-            this.ILIDAR.Size = new System.Drawing.Size(126, 20);
+            this.ILIDAR.Size = new System.Drawing.Size(131, 20);
             this.ILIDAR.TabIndex = 68;
-            this.ILIDAR.Text = "Distance (cm) :";
+            this.ILIDAR.Text = "Distance (mm) :";
             this.ILIDAR.Visible = false;
             // 
             // eLIDAR
