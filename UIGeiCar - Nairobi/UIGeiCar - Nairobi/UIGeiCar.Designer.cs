@@ -77,6 +77,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ILIDAR = new System.Windows.Forms.Label();
             this.eLIDAR = new System.Windows.Forms.Label();
+            this.car_detected = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SpdBar)).BeginInit();
             this.infoLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -476,7 +477,7 @@
             // 
             // kbCtrl
             // 
-            this.kbCtrl.Location = new System.Drawing.Point(516, 242);
+            this.kbCtrl.Location = new System.Drawing.Point(516, 238);
             this.kbCtrl.Margin = new System.Windows.Forms.Padding(4);
             this.kbCtrl.Name = "kbCtrl";
             this.kbCtrl.Size = new System.Drawing.Size(149, 28);
@@ -491,7 +492,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(190, 318);
+            this.label1.Location = new System.Drawing.Point(190, 305);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(199, 32);
@@ -503,7 +504,7 @@
             this.BmodePlatooning.AutoSize = true;
             this.BmodePlatooning.BackgroundImage = global::UIGeiCar___Nairobi.Properties.Resources.OFF;
             this.BmodePlatooning.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BmodePlatooning.Location = new System.Drawing.Point(196, 353);
+            this.BmodePlatooning.Location = new System.Drawing.Point(194, 342);
             this.BmodePlatooning.Name = "BmodePlatooning";
             this.BmodePlatooning.Size = new System.Drawing.Size(188, 70);
             this.BmodePlatooning.TabIndex = 62;
@@ -529,7 +530,7 @@
             // 
             this.BPlat_accept.BackColor = System.Drawing.Color.Lime;
             this.BPlat_accept.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BPlat_accept.Location = new System.Drawing.Point(457, 357);
+            this.BPlat_accept.Location = new System.Drawing.Point(457, 372);
             this.BPlat_accept.Name = "BPlat_accept";
             this.BPlat_accept.Size = new System.Drawing.Size(98, 36);
             this.BPlat_accept.TabIndex = 64;
@@ -542,7 +543,7 @@
             // 
             this.BPlat_refuse.BackColor = System.Drawing.Color.Red;
             this.BPlat_refuse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BPlat_refuse.Location = new System.Drawing.Point(588, 357);
+            this.BPlat_refuse.Location = new System.Drawing.Point(586, 372);
             this.BPlat_refuse.Name = "BPlat_refuse";
             this.BPlat_refuse.Size = new System.Drawing.Size(96, 36);
             this.BPlat_refuse.TabIndex = 65;
@@ -565,7 +566,7 @@
             // 
             this.ILIDAR.AutoSize = true;
             this.ILIDAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ILIDAR.Location = new System.Drawing.Point(485, 315);
+            this.ILIDAR.Location = new System.Drawing.Point(473, 341);
             this.ILIDAR.Name = "ILIDAR";
             this.ILIDAR.Size = new System.Drawing.Size(126, 20);
             this.ILIDAR.TabIndex = 68;
@@ -576,18 +577,30 @@
             // 
             this.eLIDAR.BackColor = System.Drawing.SystemColors.Control;
             this.eLIDAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eLIDAR.Location = new System.Drawing.Point(617, 313);
+            this.eLIDAR.Location = new System.Drawing.Point(605, 339);
             this.eLIDAR.Name = "eLIDAR";
             this.eLIDAR.Size = new System.Drawing.Size(65, 23);
             this.eLIDAR.TabIndex = 69;
             this.eLIDAR.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.eLIDAR.Visible = false;
             // 
+            // car_detected
+            // 
+            this.car_detected.AutoSize = true;
+            this.car_detected.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.car_detected.Location = new System.Drawing.Point(410, 294);
+            this.car_detected.Name = "car_detected";
+            this.car_detected.Size = new System.Drawing.Size(323, 44);
+            this.car_detected.TabIndex = 70;
+            this.car_detected.Visible = false;
+            this.car_detected.Text = "CAR DETECTED";
+            // 
             // UIGeiCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 434);
+            this.Controls.Add(this.car_detected);
             this.Controls.Add(this.eLIDAR);
             this.Controls.Add(this.ILIDAR);
             this.Controls.Add(this.BPlat_refuse);
@@ -699,5 +712,6 @@
         private System.Windows.Forms.Button BPlat_refuse;
         private System.Windows.Forms.Label ILIDAR;
         private System.Windows.Forms.Label eLIDAR;
+        private System.Windows.Forms.Label car_detected;
     }
 }

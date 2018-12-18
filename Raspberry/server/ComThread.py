@@ -20,7 +20,7 @@ US2 = 0x001
 OM1 = 0x101
 OM2 = 0x102
 
-DistanceLidar = 0
+DistanceLidar = 2000
 '''
  Messages envoyés :
     - ultrason avant gauche
@@ -176,6 +176,8 @@ class MyReceive(Thread):
 
         while True :
             data = self.conn.recv(1024)
+            data = str(data)
+            data = data[2:len(data)-1]
 
             if not data: break
             
@@ -221,13 +223,13 @@ class MyReceive(Thread):
                         self.move = -1
                         self.enable = 1
                 elif (header == 'PLA'):
-                    if (payload == 'on'):
+                    if (payload == 'yes'):
                         print("starting platooning mode")
                         # starting platooning thread
                         newthreadplat = MyPlatooning(self.bus)
                         newthreadplat.start()                     
 					    #newthreadplat.join()
-                    if (payload == b'off'):
+                    if (payload == 'off'):
                         print("stopping platooning mode")
 
                 print(self.speed_cmd)
@@ -236,12 +238,12 @@ class MyReceive(Thread):
                 print(self.enable)
 
                 #edition des commandes de mouvement
-                if ~self.move:
+                if self.move == 0:
                     cmd_mv = (50 + self.move*self.speed_cmd) & ~0x80
                 else:
                     cmd_mv = (50 + self.move*self.speed_cmd) | 0x80
 
-                if ~self.turn:
+                if self.turn == 0:
                     cmd_turn = 50 +self.turn*20 & 0x80
                 else:
                     cmd_turn = 50 + self.turn*20 | 0x80

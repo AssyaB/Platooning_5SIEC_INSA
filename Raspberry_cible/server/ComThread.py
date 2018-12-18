@@ -69,11 +69,6 @@ class MySend(Thread):
     def run(self):
         while True :
 
-            #send Lidar data
-            message = "LID:" + str(DistanceLidar) + ";"
-            size = self.conn.send(message.encode())
-            if size == 0: break
-
             msg = self.bus.recv()
 
             #print(msg.arbitration_id, msg.data)
@@ -176,6 +171,8 @@ class MyReceive(Thread):
 
         while True :
             data = self.conn.recv(1024)
+            data = str(data)
+            data = data[2:len(data)-1]
 
             if not data: break
 
@@ -223,11 +220,7 @@ class MyReceive(Thread):
                 elif (header == 'PLA'):
                     if (payload == 'on'):
                         print("starting platooning mode")
-                        # starting platooning thread
-                        newthreadplat = MyPlatooning(self.bus)
-                        newthreadplat.start()
-					    #newthreadplat.join()
-                    if (payload == 'off'):
+                    if (payload == b'off'):
                         print("stopping platooning mode")
 
                 print(self.speed_cmd)
