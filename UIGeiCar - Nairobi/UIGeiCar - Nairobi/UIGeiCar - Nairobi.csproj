@@ -68,6 +68,7 @@
     <EmbeddedResource Include="UIGeiCar.resx">
       <DependentUpon>UIGeiCar.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="attention.png" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
