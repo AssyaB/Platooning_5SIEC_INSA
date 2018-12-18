@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIGeiCar - Nairobi", "UIGeiCar - Nairobi\UIGeiCar - Nairobi.csproj", "{0AF9F149-042A-4B80-9E7A-FB76C8B3F101}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIGeiCar_Cible", "UIGeiCar - Nairobi\UIGeiCar_Cible.csproj", "{0AF9F149-042A-4B80-9E7A-FB76C8B3F101}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

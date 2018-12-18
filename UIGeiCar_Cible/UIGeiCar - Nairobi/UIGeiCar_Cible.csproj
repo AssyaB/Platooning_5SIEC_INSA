@@ -7,7 +7,7 @@
     <ProjectGuid>{0AF9F149-042A-4B80-9E7A-FB76C8B3F101}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>UIGeiCar___Nairobi</RootNamespace>
-    <AssemblyName>UIGeiCar - Nairobi</AssemblyName>
+    <AssemblyName>UIGeiCar_Cible</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

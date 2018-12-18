@@ -62,17 +62,23 @@ if __name__ == "__main__":
         newLidar = Lidar_thread(bus)
         newLidar.setName('Th-Lidar')
         newLidar.start()
-        
+        '''
+        newRegul = commande_LIDAR(bus)
+        newRegul.setName('Th-Regul')
+        newRegul.start()
+        '''
     except KeyboardInterrupt:#To finish : Stop correctly all the threads
         VN.stop_all.set()
-        VN.exit_lidar.set()
-        
+    
+    
     
     newthread.join()
     newsend.join()
     
+    VN.exit_lidar.set()
     newLidar.join()
     '''
+    newRegul.join()
     newthreadplat.join()
     '''
     print('Bring down CAN0....')

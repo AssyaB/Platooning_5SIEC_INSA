@@ -16,8 +16,6 @@ namespace UIGeiCar___Nairobi
         TcpClient clientSocket = new TcpClient();
         NetworkStream nwStream;
         Boolean bConnected = false;
-        Boolean platooning_mode = false;
-        Boolean waiting_mode = false;
 
         public UIGeiCar()
         {
@@ -123,28 +121,6 @@ namespace UIGeiCar___Nairobi
                                 break;
                             case "PIT":
                                 ePITCH.Text = elt[1];
-                                break;
-                            case "LID":
-                                int dist_lidar = Int32.Parse(elt[1]);
-                                dist_lidar = dist_lidar - 1000; //Real distance in mm
-                                string dist = String.Concat(dist_lidar);
-                                eLIDAR.Text = dist;
-                                if (dist_lidar >= 100 && dist_lidar <= 4000 && waiting_mode == true)
-                                {
-                                    Display_label_on();
-                                }
-                                break;
-                            case "ERR":
-                                Display_label_off();
-                                if(elt[1] == "obs")
-                                {
-                                    eWARNING_obstacle.Visible = true;
-                                    Lost_car_process();                                    
-                                }
-                                else
-                                {
-                                    eWARNING_car_lost.Visible = true;
-                                }
                                 break;
                             default:
                                 cmpt = (cmpt + 1) % 100;
@@ -325,34 +301,7 @@ namespace UIGeiCar___Nairobi
             }
         }
 
-        private void BmodePlatooning_Click(object sender, EventArgs e)
-        {
-            if (bConnected)
-            {
-                if (platooning_mode == false && waiting_mode == false)
-                {
-                    byte[] bytes = Encoding.ASCII.GetBytes("PLA:" + "on;");
-                    BmodePlatooning.BackgroundImage = Properties.Resources.wait;
-                    nwStream.Write(bytes, 0, bytes.Length);
-                    platooning_mode = false;
-                    waiting_mode = true;
-                }
-                else
-                {
-                    if(platooning_mode == true || waiting_mode == true)
-                    {
-                        byte[] bytes = Encoding.ASCII.GetBytes("PLA:" + "off;");
-                        BmodePlatooning.BackgroundImage = Properties.Resources.OFF;
-                        nwStream.Write(bytes, 0, bytes.Length);
-                        platooning_mode = false;
-                        waiting_mode = false;
-                        Display_label_off();
-                    }
-                }
-
-            }
-        }
-
+ 
         private void Bdisconnect_Click(object sender, EventArgs e)
         {
             try
@@ -370,75 +319,6 @@ namespace UIGeiCar___Nairobi
                 bconnect.Text = "Failed to disconnect";
                 Console.WriteLine(ex.Message);
             }
-        }
-
-        private void BPlat_accept_Click(object sender, EventArgs e)
-        {
-            if (waiting_mode == true)
-            {
-                byte[] bytes = Encoding.ASCII.GetBytes("PLA:" + "yes;");
-                BmodePlatooning.BackgroundImage = Properties.Resources.ON;
-                nwStream.Write(bytes, 0, bytes.Length);
-                waiting_mode = false;
-                platooning_mode = true;
-                ILIDAR.Visible = true;
-                eLIDAR.Visible = true;
-                car_detected.Visible = false;
-                BPlat_accept.Enabled = false;
-                BPlat_refuse.Enabled = false;
-                BPlat_accept.Visible = false;
-                BPlat_refuse.Visible = false;
-            }
-        }
-
-        private void BPlat_refuse_Click(object sender, EventArgs e)
-        {
-            if (waiting_mode == true)
-            {
-                byte[] bytes = Encoding.ASCII.GetBytes("PLA:" + "no;");
-                BmodePlatooning.BackgroundImage = Properties.Resources.wait;
-                nwStream.Write(bytes, 0, bytes.Length);
-                waiting_mode = true;
-                platooning_mode = false;
-                ILIDAR.Visible = true;
-                eLIDAR.Visible = true;
-                car_detected.Visible = false;
-                BPlat_accept.Enabled = true;
-                BPlat_refuse.Enabled = true;
-                BPlat_accept.Visible = true;
-                BPlat_refuse.Visible = true;
-            }
-        }
-
-        private void Display_label_on()
-        {
-            ILIDAR.Visible = true;
-            eLIDAR.Visible = true;
-            car_detected.Visible = true;
-            BPlat_accept.Enabled = true;
-            BPlat_refuse.Enabled = true;
-            BPlat_accept.Visible = true;
-            BPlat_refuse.Visible = true;
-        }
-
-        private void Display_label_off()
-        {
-            ILIDAR.Visible = false;
-            eLIDAR.Visible = false;
-            car_detected.Visible = false;
-            BPlat_accept.Enabled = false;
-            BPlat_refuse.Enabled = false;
-            BPlat_accept.Visible = false;
-            BPlat_refuse.Visible = false;
-        }
-
-        private void Lost_car_process()
-        {
-            byte[] bytes = Encoding.ASCII.GetBytes("PLA:" + "off;");
-            BmodePlatooning.BackgroundImage = Properties.Resources.OFF;
-            nwStream.Write(bytes, 0, bytes.Length);
-            platooning_mode = false;
-            waiting_mode = false;
         }
     }
 }
