@@ -218,6 +218,7 @@
             // 
             // bconnect
             // 
+            this.bconnect.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bconnect.Location = new System.Drawing.Point(261, 14);
             this.bconnect.Margin = new System.Windows.Forms.Padding(4);
             this.bconnect.Name = "bconnect";
@@ -225,7 +226,7 @@
             this.bconnect.TabIndex = 0;
             this.bconnect.TabStop = false;
             this.bconnect.Text = "Connect";
-            this.bconnect.UseVisualStyleBackColor = true;
+            this.bconnect.UseVisualStyleBackColor = false;
             this.bconnect.Click += new System.EventHandler(this.Bconnect_Click);
             // 
             // ip
@@ -252,6 +253,7 @@
             // 
             // bforward
             // 
+            this.bforward.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bforward.Enabled = false;
             this.bforward.Location = new System.Drawing.Point(541, 117);
             this.bforward.Margin = new System.Windows.Forms.Padding(4);
@@ -260,11 +262,12 @@
             this.bforward.TabIndex = 3;
             this.bforward.TabStop = false;
             this.bforward.Text = "Forward";
-            this.bforward.UseVisualStyleBackColor = true;
+            this.bforward.UseVisualStyleBackColor = false;
             this.bforward.Click += new System.EventHandler(this.Bforward_Click);
             // 
             // bright
             // 
+            this.bright.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bright.Enabled = false;
             this.bright.Location = new System.Drawing.Point(649, 153);
             this.bright.Margin = new System.Windows.Forms.Padding(4);
@@ -273,11 +276,12 @@
             this.bright.TabIndex = 4;
             this.bright.TabStop = false;
             this.bright.Text = "Right";
-            this.bright.UseVisualStyleBackColor = true;
+            this.bright.UseVisualStyleBackColor = false;
             this.bright.Click += new System.EventHandler(this.Bright_Click);
             // 
             // bleft
             // 
+            this.bleft.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bleft.Enabled = false;
             this.bleft.Location = new System.Drawing.Point(433, 153);
             this.bleft.Margin = new System.Windows.Forms.Padding(4);
@@ -286,11 +290,12 @@
             this.bleft.TabIndex = 5;
             this.bleft.TabStop = false;
             this.bleft.Text = "Left";
-            this.bleft.UseVisualStyleBackColor = true;
+            this.bleft.UseVisualStyleBackColor = false;
             this.bleft.Click += new System.EventHandler(this.Bleft_Click);
             // 
             // bbackward
             // 
+            this.bbackward.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bbackward.Enabled = false;
             this.bbackward.Location = new System.Drawing.Point(541, 153);
             this.bbackward.Margin = new System.Windows.Forms.Padding(4);
@@ -299,11 +304,12 @@
             this.bbackward.TabIndex = 6;
             this.bbackward.TabStop = false;
             this.bbackward.Text = "Backward";
-            this.bbackward.UseVisualStyleBackColor = true;
+            this.bbackward.UseVisualStyleBackColor = false;
             this.bbackward.Click += new System.EventHandler(this.Bbackward_Click);
             // 
             // bstopSTE
             // 
+            this.bstopSTE.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bstopSTE.Enabled = false;
             this.bstopSTE.Location = new System.Drawing.Point(433, 188);
             this.bstopSTE.Margin = new System.Windows.Forms.Padding(4);
@@ -312,11 +318,12 @@
             this.bstopSTE.TabIndex = 7;
             this.bstopSTE.TabStop = false;
             this.bstopSTE.Text = "Stop Rot.";
-            this.bstopSTE.UseVisualStyleBackColor = true;
+            this.bstopSTE.UseVisualStyleBackColor = false;
             this.bstopSTE.Click += new System.EventHandler(this.BstopSTE_Click);
             // 
             // bstopMOV
             // 
+            this.bstopMOV.BackColor = System.Drawing.SystemColors.ControlDark;
             this.bstopMOV.Enabled = false;
             this.bstopMOV.Location = new System.Drawing.Point(611, 188);
             this.bstopMOV.Margin = new System.Windows.Forms.Padding(4);
@@ -325,7 +332,7 @@
             this.bstopMOV.TabIndex = 8;
             this.bstopMOV.TabStop = false;
             this.bstopMOV.Text = "Stop Mov.";
-            this.bstopMOV.UseVisualStyleBackColor = true;
+            this.bstopMOV.UseVisualStyleBackColor = false;
             this.bstopMOV.Click += new System.EventHandler(this.BstopMOV_Click);
             // 
             // eBAT
@@ -479,6 +486,7 @@
             // 
             // kbCtrl
             // 
+            this.kbCtrl.BackColor = System.Drawing.SystemColors.ControlDark;
             this.kbCtrl.Location = new System.Drawing.Point(516, 238);
             this.kbCtrl.Margin = new System.Windows.Forms.Padding(4);
             this.kbCtrl.Name = "kbCtrl";
@@ -486,14 +494,14 @@
             this.kbCtrl.TabIndex = 60;
             this.kbCtrl.TabStop = false;
             this.kbCtrl.Text = "KeyBoard Control";
-            this.kbCtrl.UseVisualStyleBackColor = true;
+            this.kbCtrl.UseVisualStyleBackColor = false;
             this.kbCtrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyDown);
             this.kbCtrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UIGeiCar_KeyUp);
             this.kbCtrl.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.KbCtrl_PreviewKeyDown);
             // 
             // bdisconnect
             // 
-            this.bdisconnect.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bdisconnect.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.bdisconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bdisconnect.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.bdisconnect.FlatAppearance.BorderSize = 0;
