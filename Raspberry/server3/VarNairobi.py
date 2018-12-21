@@ -1,6 +1,10 @@
 # coding: utf-8
 from threading import *
 
+
+#IP of the front vehicle
+global IPPLAT
+IPPLAT = '10.105.0.53'
 #Signal all stop
 global stop_all
 stop_all = Event()
@@ -23,4 +27,3 @@ exit_lidar.clear()
 global PlatooningActive
 PlatooningActive = Event()
 PlatooningActive.clear()
-

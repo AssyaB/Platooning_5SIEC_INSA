@@ -32,6 +32,15 @@ if __name__ == "__main__":
     os.system("sudo /sbin/ip link set can0 up type can bitrate 400000")
     time.sleep(0.1)
 
+    #Looking for IP address to "know" which network is used
+    ip = os.popen('hostname -I').read() #get chain with '[@IP] \n'
+    ip = ip[:len(ip)-2] #(suppress ' \n')
+    # Only correct with the two cars black and pink
+    if ip == '10.105.1.17': #IOT network
+        VN.IPPLAT = '10.105.0.53'
+    elif ip == '192.168.137.149': #Nairobibi network
+        VN.IPPLAT = '192.168.137.87'
+    
     try:
         bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
     except OSError:
@@ -69,12 +78,12 @@ if __name__ == "__main__":
         '''
     except KeyboardInterrupt:#To finish : Stop correctly all the threads
         VN.stop_all.set()
-    
-    
-    
+
+
+
     newthread.join()
     newsend.join()
-    
+
     VN.exit_lidar.set()
     newLidar.join()
     '''
