@@ -125,7 +125,26 @@ namespace UIGeiCar___Nairobi
                                 ePITCH.Text = elt[1];
                                 break;
                             case "LID":
-                                eLIDAR.Text = elt[1];
+                                int dist_lidar = Int32.Parse(elt[1]);
+                                dist_lidar = dist_lidar - 1000; //Real distance in mm
+                                string dist = String.Concat(dist_lidar);
+                                eLIDAR.Text = dist;
+                                if (dist_lidar >= 100 && dist_lidar <= 4000 && waiting_mode == true)
+                                {
+                                    Display_label_on();
+                                }
+                                break;
+                            case "ERR":
+                                Display_label_off();
+                                if(elt[1] == "obs")
+                                {
+                                    eWARNING_obstacle.Visible = true;
+                                    Lost_car_process();                                    
+                                }
+                                else
+                                {
+                                    eWARNING_car_lost.Visible = true;
+                                }
                                 break;
                             default:
                                 cmpt = (cmpt + 1) % 100;
@@ -317,13 +336,6 @@ namespace UIGeiCar___Nairobi
                     nwStream.Write(bytes, 0, bytes.Length);
                     platooning_mode = false;
                     waiting_mode = true;
-                    ILIDAR.Visible = true;
-                    eLIDAR.Visible = true;
-                    BPlat_accept.Enabled = true;
-                    BPlat_refuse.Enabled = true;
-                    BPlat_accept.Visible = true;
-                    BPlat_refuse.Visible = true;
-                    //BmodePlatooning.BackgroundImageLayout =;
                 }
                 else
                 {
@@ -334,12 +346,7 @@ namespace UIGeiCar___Nairobi
                         nwStream.Write(bytes, 0, bytes.Length);
                         platooning_mode = false;
                         waiting_mode = false;
-                        ILIDAR.Visible = false;
-                        eLIDAR.Visible = false;
-                        BPlat_accept.Enabled = false;
-                        BPlat_refuse.Enabled = false;
-                        BPlat_accept.Visible = false;
-                        BPlat_refuse.Visible = false;
+                        Display_label_off();
                     }
                 }
 
@@ -376,6 +383,7 @@ namespace UIGeiCar___Nairobi
                 platooning_mode = true;
                 ILIDAR.Visible = true;
                 eLIDAR.Visible = true;
+                car_detected.Visible = false;
                 BPlat_accept.Enabled = false;
                 BPlat_refuse.Enabled = false;
                 BPlat_accept.Visible = false;
@@ -390,13 +398,47 @@ namespace UIGeiCar___Nairobi
                 byte[] bytes = Encoding.ASCII.GetBytes("PLA:" + "no;");
                 BmodePlatooning.BackgroundImage = Properties.Resources.wait;
                 nwStream.Write(bytes, 0, bytes.Length);
+                waiting_mode = true;
+                platooning_mode = false;
                 ILIDAR.Visible = true;
                 eLIDAR.Visible = true;
+                car_detected.Visible = false;
                 BPlat_accept.Enabled = true;
                 BPlat_refuse.Enabled = true;
                 BPlat_accept.Visible = true;
                 BPlat_refuse.Visible = true;
             }
+        }
+
+        private void Display_label_on()
+        {
+            ILIDAR.Visible = true;
+            eLIDAR.Visible = true;
+            car_detected.Visible = true;
+            BPlat_accept.Enabled = true;
+            BPlat_refuse.Enabled = true;
+            BPlat_accept.Visible = true;
+            BPlat_refuse.Visible = true;
+        }
+
+        private void Display_label_off()
+        {
+            ILIDAR.Visible = false;
+            eLIDAR.Visible = false;
+            car_detected.Visible = false;
+            BPlat_accept.Enabled = false;
+            BPlat_refuse.Enabled = false;
+            BPlat_accept.Visible = false;
+            BPlat_refuse.Visible = false;
+        }
+
+        private void Lost_car_process()
+        {
+            byte[] bytes = Encoding.ASCII.GetBytes("PLA:" + "off;");
+            BmodePlatooning.BackgroundImage = Properties.Resources.OFF;
+            nwStream.Write(bytes, 0, bytes.Length);
+            platooning_mode = false;
+            waiting_mode = false;
         }
     }
 }
