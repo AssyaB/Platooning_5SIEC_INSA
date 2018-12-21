@@ -40,6 +40,7 @@ class Lidar_thread(Thread):
         bestDistance = 7000
         bestAngle = 180
         oldGoodValue = 7000
+		oldAngle = 180
         Kp = 0.06
         time.sleep(2)
         for new_scan, quality, angle, distance in self.lidar.iter_measurments():
@@ -56,16 +57,16 @@ class Lidar_thread(Thread):
             else :
                 #dans VarNairobi wait_interface_on=threading.Even(); wait_interface_on.clear()
                 #Filtrage des donnees recuperees par le lidar
-                if quality>= 10 and 160 <=angle and angle<= 200:
-                    if distance > 500:
-                        if distance < mean(DistTab)*0.9:
+                if quality>= 10 and oldAngle*0.95 <=angle and angle<= oldAngle*1.05:
+                    if (distance > 600):
+                        if (distance < mean(DistTab)*0.9):
                             DistTab = [distance]
                             AnglTab = [angle]
                         elif distance <= mean(DistTab)*1.1:
                             DistTab.append(distance)
                             AnglTab.append(angle)
                             #print(self.getName(), ': BD : ', int(mean(DistTab)))
-                        i=1				
+                        i=1	
                 #Calcul de la cmd vitesse			
                 elif angle > 210 and i==1:
                     bestDistance = int(mean(DistTab))
@@ -106,6 +107,7 @@ class Lidar_thread(Thread):
                         msg = can.Message(arbitration_id=MCM,data=[cmd_mv, cmd_mv, cmd_turn, 0, 0, 0, 0, 0], extended_id = False)
                         self.bus.send(msg)
                     i=0
+					oldAngle = mean(AnglTab)
                     bestQuality = 0
                     DistTab = [7000]
                     AnglTab = [0]
