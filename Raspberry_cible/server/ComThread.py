@@ -20,6 +20,7 @@ US2 = 0x001
 OM1 = 0x101
 OM2 = 0x102
 
+DistanceLidar = 0
 '''
  Messages envoyés :
     - ultrason avant gauche
@@ -67,12 +68,12 @@ class MySend(Thread):
 
     def run(self):
         while True :
-            
+
             msg = self.bus.recv()
 
             #print(msg.arbitration_id, msg.data)
             #st = ""
-            
+
             if msg.arbitration_id == US1:
                 # ultrason avant gauche
                 distance = int.from_bytes(msg.data[0:2], byteorder='big')
@@ -174,18 +175,18 @@ class MyReceive(Thread):
             data = data[2:len(data)-1]
 
             if not data: break
-            
-            #split each command received if there are more of 1 
+
+            #split each command received if there are more of 1
             for cmd in data.split(';'):
                 print('val cmd : ',cmd)
-                
+
                 # don't try an empty command
-                if not cmd: continue 
-                
+                if not cmd: continue
+
                 #split the dealed command in header and payload (command = 'header:payload;')
                 header, payload = cmd.split(':')
                 print("header :", header, " payload:", payload)
-                
+
                 #Deal with the command
                 if (header == 'SPE'):  # speed
                     self.speed_cmd = int(payload)

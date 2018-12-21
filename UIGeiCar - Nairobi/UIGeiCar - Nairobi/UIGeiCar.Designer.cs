@@ -81,7 +81,6 @@
             this.IWARNING = new System.Windows.Forms.PictureBox();
             this.eWARNING_obstacle = new System.Windows.Forms.Label();
             this.eWARNING_car_lost = new System.Windows.Forms.Label();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.SpdBar)).BeginInit();
             this.infoLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -551,9 +550,9 @@
             this.ILIDAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ILIDAR.Location = new System.Drawing.Point(473, 341);
             this.ILIDAR.Name = "ILIDAR";
-            this.ILIDAR.Size = new System.Drawing.Size(126, 20);
+            this.ILIDAR.Size = new System.Drawing.Size(131, 20);
             this.ILIDAR.TabIndex = 68;
-            this.ILIDAR.Text = "Distance (cm) :";
+            this.ILIDAR.Text = "Distance (mm) :";
             this.ILIDAR.Visible = false;
             // 
             // eLIDAR
@@ -760,6 +759,5 @@
         private System.Windows.Forms.PictureBox IWARNING;
         private System.Windows.Forms.Label eWARNING_obstacle;
         private System.Windows.Forms.Label eWARNING_car_lost;
-        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
