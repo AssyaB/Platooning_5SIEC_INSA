@@ -36,7 +36,7 @@ OM2 = 0x102
     header : URR payload : entier, distance en cm
     - position volant
     header : POS payload : entier, valeur brute du capteur
-    - vitesse rouMCMe gauche
+    - vitesse roue gauche
     header : SWL payload : entier, *0.01rpm
     - vitesse roue droite
     header : SWR payload : entier, *0.01rpm
