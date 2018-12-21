@@ -3,8 +3,8 @@
 
 #define SPEED1Min 37
 #define SPEED1Max 63
-#define SPEED2Min 40
-#define SPEED2Max 60
+#define SPEED2Min 42
+#define SPEED2Max 58
 
 
 //#define gauche_volant 0x98E // valeur initiale = 2395
@@ -90,7 +90,7 @@ void position_cmd (GPIO_PinState en_steering, int msg_CAN){
 	angle_diff = msg_corr - cpt_centre;
 
 	// Discrete command turning/steady
-	if (abs(angle_diff)<50){
+	if (abs(angle_diff)<100){
 		if(abs(angle_diff)<25){steering_set_speed(GPIO_PIN_RESET, MEDIUM_CMD_STEERING);}// Don't move
 		else if (angle_diff > 0){steering_set_speed(en_steering, MIN_CMD_STEERING2);}// Go Left ??
 		else {steering_set_speed(en_steering, MAX_CMD_STEERING2);} // Go Right ??
