@@ -203,11 +203,11 @@ class MyReceive(Thread):
                     print("speed is updated to ", self.speed_cmd)
                 elif (header == 'STE'):  # steering
                     if (payload == 'left'):
-                        self.turn = -1
+                        self.turn = 1
                         self.enable = 1
                         print("send cmd turn left")
                     elif (payload == 'right'):
-                        self.turn = 1
+                        self.turn = -1
                         self.enable = 1
                         print("send cmd turn right")
                     elif (payload == 'stop'):
