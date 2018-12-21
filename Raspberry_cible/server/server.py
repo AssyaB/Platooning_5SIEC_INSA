@@ -49,6 +49,7 @@ if __name__ == "__main__":
 
     
     # Connection à la voiture qui suit
+    print('ready to be connected')
     splat = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     splat.bind((HOST, PORTPLAT))
     splat.listen(1)
