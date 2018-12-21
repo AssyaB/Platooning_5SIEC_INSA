@@ -33,7 +33,8 @@ class Lidar_thread(Thread):
     
     def run(self):
         print(self.getName(), 'running')
-        i=0
+        calcul_cmd = 0
+		initialisation = 1
         bestQuality = 0
         DistTab = [7000]
         AnglTab = [0]
@@ -57,18 +58,28 @@ class Lidar_thread(Thread):
             else :
                 #dans VarNairobi wait_interface_on=threading.Even(); wait_interface_on.clear()
                 #Filtrage des donnees recuperees par le lidar
-                if quality>= 10 and oldAngle*0.93 <=angle and angle<= oldAngle*1.07:
-                    if (distance > 600):
-                        if (distance < mean(DistTab)*0.9):
-                            DistTab = [distance]
-                            AnglTab = [angle]
-                        elif distance <= mean(DistTab)*1.1:
-                            DistTab.append(distance)
-                            AnglTab.append(angle)
+                if quality>= 10 and oldAngle*0.95 <=angle and angle<= oldAngle*1.05:
+                    if initialisation == 1:
+					    # A coder :
+					    # on initialise les tableaux de distance et angle 
+                        # on considère l'objet le plus proche de 180°
+                        # on considère l'objet le plus proche en distance	
+						# initialisation = 0
+					else:
+					    # A coder : 
+						# on considère les tableaux précédents 
+                        # pour créer les nouveaux tableaux
+						if (distance > 600):
+                            if (distance < mean(DistTab)*0.9):
+                                DistTab = [distance]
+                                AnglTab = [angle]
+                            elif distance <= mean(DistTab)*1.1:
+                                DistTab.append(distance)
+                                AnglTab.append(angle)
                             #print(self.getName(), ': BD : ', int(mean(DistTab)))
-                        i=1	
+                    calcul_cmd = 1	
                 #Calcul de la cmd vitesse			
-                elif angle > 210 and i==1:
+                elif angle > 210 and calcul_cmd==1:
                     bestDistance = int(mean(DistTab))
                     bestAngle = int(mean(AnglTab))
                     print(self.getName(), ': Test')
@@ -106,7 +117,7 @@ class Lidar_thread(Thread):
                         cmd_turn = (50 - corrAngle)| 0x80
                         msg = can.Message(arbitration_id=MCM,data=[cmd_mv, cmd_mv, cmd_turn, 0, 0, 0, 0, 0], extended_id = False)
                         self.bus.send(msg)
-                    i=0
+                    calcul_cmd = 0
 					oldAngle = mean(AnglTab)
                     bestQuality = 0
                     DistTab = [7000]
