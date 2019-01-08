@@ -42,6 +42,7 @@ class Lidar_thread(Thread):
         oldGoodValue = 7000
         oldAngle = 180
         Kp = 0.06
+        init = 0
         time.sleep(2)
         for new_scan, quality, angle, distance in self.lidar.iter_measurments():
             #print(self.getName(), 'reading lidar') #OK
@@ -66,7 +67,8 @@ class Lidar_thread(Thread):
                             DistTab.append(distance)
                             AnglTab.append(angle)
                             #print(self.getName(), ': BD : ', int(mean(DistTab)))
-                        i=1	
+                        i=1
+						
                 #Calcul de la cmd vitesse			
                 elif angle > 210 and i==1:
                     bestDistance = int(mean(DistTab))
@@ -96,8 +98,16 @@ class Lidar_thread(Thread):
                             speed = 0
                         elif speed >=20:
                             speed = 20
-                        if bestDistance>=3000:
-                            speed = 0
+                        #Gestion d'anomalies et d'obstacles a  partir du 2eme tour du lidar
+                        if init == 1:
+                            diffDistance= oldDistance - bestDistance
+                            if bestDistance>=3000:
+                                speed = 0
+                                print("vehicle loss")
+                            elif diffDistance>=300:
+                                speed = 0
+                                print("obstacle detected")
+						
                         cmd_mv = (50 + speed) | 0x80
                         print(cmd_mv)
                         # Correction Angle
@@ -110,6 +120,11 @@ class Lidar_thread(Thread):
                         cmd_turn = (50 - corrAngle)| 0x80
                         msg = can.Message(arbitration_id=MCM,data=[cmd_mv, cmd_mv, cmd_turn, 0, 0, 0, 0, 0], extended_id = False)
                         self.bus.send(msg)
+                        
+                        #memorisation de la distance moyenne precedente
+                        oldDistance = bestDistance
+                        init = 1
+
                     i=0
                     oldAngle = mean(AnglTab)
                     bestQuality = 0
@@ -117,7 +132,6 @@ class Lidar_thread(Thread):
                     AnglTab = [0]
                     bestDistance = 7000
                     bestAngle = 0
-
 
 class commande_LIDAR(Thread):
 
