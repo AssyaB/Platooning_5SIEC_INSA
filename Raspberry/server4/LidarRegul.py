@@ -40,6 +40,7 @@ class Lidar_thread(Thread):
         bestDistance = 7000
         bestAngle = 180
         oldGoodValue = 7000
+		oldAngle = 180
         Kp = 0.06
         time.sleep(2)
         for new_scan, quality, angle, distance in self.lidar.iter_measurments():
@@ -56,16 +57,16 @@ class Lidar_thread(Thread):
             else :
                 #dans VarNairobi wait_interface_on=threading.Even(); wait_interface_on.clear()
                 #Filtrage des donnees recuperees par le lidar
-                if quality>= 10 and 160 <=angle and angle<= 200:
-                    if distance > 500:
-                        if distance < mean(DistTab)*0.9:
+                if quality>= 10 and oldAngle-9 <=angle and angle<= oldAngle+9: #angle +/- au lieu de %
+                    if (distance > 600):
+                        if (distance < mean(DistTab)*0.9):
                             DistTab = [distance]
                             AnglTab = [angle]
                         elif distance <= mean(DistTab)*1.1:
                             DistTab.append(distance)
                             AnglTab.append(angle)
                             #print(self.getName(), ': BD : ', int(mean(DistTab)))
-                        i=1				
+                        i=1	
                 #Calcul de la cmd vitesse			
                 elif angle > 210 and i==1:
                     bestDistance = int(mean(DistTab))
@@ -79,8 +80,8 @@ class Lidar_thread(Thread):
                         print(self.getName(), ': can not access DistLidar')
                     if VN.PlatooningActive.isSet():
                         # Correction Vitesse
-                        if bestDistance > 4000:
-                            if oldGoodValue < 3000:
+                        if bestDistance > 3200:      #safety distance modifie
+                            if oldGoodValue < 2200:  #safety distance modifie
                                 temp = bestDistance
                                 bestDistance = oldGoodValue
                                 oldGoodValue = temp
@@ -88,15 +89,17 @@ class Lidar_thread(Thread):
                                 oldGoodValue = bestDistance
                         else:
                             oldGoodvalue = bestDistance
-                        errorDistance = bestDistance - 2000
+                        errorDistance = bestDistance - 1600  #safety distance modifie
                         speed = (errorDistance * Kp)	
                         speed = int(speed)
                         if speed<=0:
                             speed = 0
                         elif speed >=20:
                             speed = 20
-                        if bestDistance>=3000:
+                        if bestDistance>=2200:  #safety distance modifie
                             speed = 0
+							# Alerter le conducteur de la perte de la voiture
+							# Arreter le platooning
                         cmd_mv = (50 + speed) | 0x80
                         print(cmd_mv)
                         # Correction Angle
@@ -106,6 +109,7 @@ class Lidar_thread(Thread):
                         msg = can.Message(arbitration_id=MCM,data=[cmd_mv, cmd_mv, cmd_turn, 0, 0, 0, 0, 0], extended_id = False)
                         self.bus.send(msg)
                     i=0
+					oldAngle = mean(AnglTab)
                     bestQuality = 0
                     DistTab = [7000]
                     AnglTab = [0]
@@ -128,5 +132,3 @@ class commande_LIDAR(Thread):
                 print(cmd_mv)
                 msg = can.Message(arbitration_id=MCM,data=[cmd_mv, cmd_mv, 0, 0, 0, 0, 0, 0], extended_id = False)
                 self.bus.send(msg)
-
-
