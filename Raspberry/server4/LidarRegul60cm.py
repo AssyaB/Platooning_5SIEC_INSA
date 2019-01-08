@@ -57,7 +57,7 @@ class Lidar_thread(Thread):
             else :
                 #dans VarNairobi wait_interface_on=threading.Even(); wait_interface_on.clear()
                 #Filtrage des donnees recuperees par le lidar
-                if quality>= 10 and oldAngle-9 <=angle and angle<= oldAngle+9:
+                if quality>= 10 and oldAngle-9 <=angle and angle<= oldAngle+9: #angle +/- au lieu de %
                     if (distance > 600):
                         if (distance < mean(DistTab)*0.9):
                             DistTab = [distance]
@@ -80,8 +80,8 @@ class Lidar_thread(Thread):
                         print(self.getName(), ': can not access DistLidar')
                     if VN.PlatooningActive.isSet():
                         # Correction Vitesse
-                        if bestDistance > 4000:
-                            if oldGoodValue < 3000:
+                        if bestDistance > 3200:      #safety distance modifie
+                            if oldGoodValue < 2200:  #safety distance modifie
                                 temp = bestDistance
                                 bestDistance = oldGoodValue
                                 oldGoodValue = temp
@@ -89,24 +89,22 @@ class Lidar_thread(Thread):
                                 oldGoodValue = bestDistance
                         else:
                             oldGoodvalue = bestDistance
-                        errorDistance = bestDistance - 2000
+                        errorDistance = bestDistance - 1600  #safety distance modifie
                         speed = (errorDistance * Kp)	
                         speed = int(speed)
                         if speed<=0:
                             speed = 0
                         elif speed >=20:
                             speed = 20
-                        if bestDistance>=3000:
+                        if bestDistance>=2200:  #safety distance modifie
                             speed = 0
+							# Alerter le conducteur de la perte de la voiture
+							# Arreter le platooning
                         cmd_mv = (50 + speed) | 0x80
                         print(cmd_mv)
                         # Correction Angle
                         errorAngle = bestAngle - 180
-                        corrAngle = int((errorAngle*15) / 9) #erreur*  * K (ici 50/20 pour un calcul rapide et peu complexe (adaptation à l'attendu commande))
-                        if corrAngle > 15:
-                            corrAngle = 15
-                        elif corrAngle < -15:
-                            corrAngle = -15
+                        corrAngle = int((errorAngle*50) / 20) #erreur*  * K (ici 50/20 pour un calcul rapide et peu complexe (adaptation à l'attendu commande))
                         cmd_turn = (50 - corrAngle)| 0x80
                         msg = can.Message(arbitration_id=MCM,data=[cmd_mv, cmd_mv, cmd_turn, 0, 0, 0, 0, 0], extended_id = False)
                         self.bus.send(msg)
