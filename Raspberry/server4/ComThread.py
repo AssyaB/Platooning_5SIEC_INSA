@@ -259,7 +259,7 @@ class MyReceive(Thread):
                         cmd_mv = (50 + self.move*self.speed_cmd) | 0x80
                     #Steering Command
                     if self.turn == 1:
-                        cmd_turn |= 0x80
+                        cmd_turn = self.cmd_ste|0x80
                         #cmd_turn = 50 +self.turn*20 & 0x80
                     else:
                         cmd_turn = 0
