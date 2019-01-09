@@ -139,11 +139,14 @@ namespace UIGeiCar___Nairobi
                                 if(elt[1] == "obs")
                                 {
                                     eWARNING_obstacle.Visible = true;
+                                    IWARNING.Visible = true;
                                     Lost_car_process();                                    
                                 }
                                 else
                                 {
                                     eWARNING_car_lost.Visible = true;
+                                    IWARNING.Visible = true;
+                                    Lost_car_process();
                                 }
                                 break;
                             default:
@@ -336,6 +339,9 @@ namespace UIGeiCar___Nairobi
                     nwStream.Write(bytes, 0, bytes.Length);
                     platooning_mode = false;
                     waiting_mode = true;
+                    IWARNING.Visible = false;
+                    eWARNING_car_lost.Visible = false;
+                    eWARNING_obstacle.Visible = false;
                 }
                 else
                 {

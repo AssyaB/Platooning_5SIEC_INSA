@@ -17,4 +17,3 @@ C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA\UIGeiCar - Nairobi\UIGeiCar -
 C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA\UIGeiCar - Nairobi\UIGeiCar - Nairobi\obj\Release\UIGeiCar - Nairobi.csproj.CoreCompileInputs.cache
 C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA\UIGeiCar - Nairobi\UIGeiCar - Nairobi\obj\Release\UIGeiCar - Nairobi.exe
 C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA\UIGeiCar - Nairobi\UIGeiCar - Nairobi\obj\Release\UIGeiCar - Nairobi.pdb
-C:\Users\aurel\Desktop\cours\Platooning_5SIEC_INSA\UIGeiCar - Nairobi\UIGeiCar - Nairobi\obj\Release\UIGeiCar - Nairobi.csprojAssemblyReference.cache
