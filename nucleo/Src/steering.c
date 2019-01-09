@@ -6,9 +6,6 @@
 #define SPEED2Min 42
 #define SPEED2Max 58
 
-
-//#define gauche_volant 0x98E // valeur initiale = 2395
-//#define droite_volant 0x730 // valeur initiale = 1825
 #define centre_volant (gauche_volant + droite_volant)/2 // valeur initiale = 2110
 
 // CHOOSE YOUR CAR

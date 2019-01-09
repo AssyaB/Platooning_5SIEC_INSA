@@ -27,3 +27,9 @@ exit_lidar.clear()
 global PlatooningActive
 PlatooningActive = Event()
 PlatooningActive.clear()
+global lidar_obstacle
+lidar_obstacle = Event()
+lidar_obstacle.clear()
+global lidar_loss
+lidar_loss = Event()
+lidar_loss.clear()

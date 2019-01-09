@@ -23,14 +23,14 @@ def mean(data):
     res /= len(data)
     return res;
 
-class Lidar_thread(Thread):  
+class Lidar_thread(Thread):
     def __init__(self, bus):
         Thread.__init__(self)
         self.bus = bus
         print(self.getName(), 'initialized')
         self.lidar = RPLidar(PORT_NAME)
-        
-    
+
+
     def run(self):
         print(self.getName(), 'running')
         i=0
@@ -68,14 +68,14 @@ class Lidar_thread(Thread):
                             AnglTab.append(angle)
                             #print(self.getName(), ': BD : ', int(mean(DistTab)))
                         i=1
-						
-                #Calcul de la cmd vitesse			
+
+                #Calcul de la cmd vitesse
                 elif angle > 210 and i==1:
                     bestDistance = int(mean(DistTab))
                     bestAngle = int(mean(AnglTab))
-                    print(self.getName(), ': Test')
+                    #print(self.getName(), ': Test')
                     if VN.DistLidarSem.acquire(False): #acquire semaphore without blocking
-                        print(self.getName(), ': access DistLidar')
+                        #print(self.getName(), ': access DistLidar')
                         VN.DistLidar = bestDistance
                         VN.DistLidarSem.release()
                     else:
@@ -92,24 +92,26 @@ class Lidar_thread(Thread):
                         else:
                             oldGoodvalue = bestDistance
                         errorDistance = bestDistance - 2000
-                        speed = (errorDistance * Kp)	
+                        speed = (errorDistance * Kp)
                         speed = int(speed)
                         if speed<=0:
                             speed = 0
                         elif speed >=20:
                             speed = 20
-                        #Gestion d'anomalies et d'obstacles a� partir du 2eme tour du lidar
+                        #Gestion d'anomalies et d'obstacles a� partir du 2eme tour du lidar
                         if init == 1:
                             diffDistance= oldDistance - bestDistance
                             if bestDistance>=3000:
                                 speed = 0
                                 print("vehicle loss")
+                                VN.lidar_loss.set()
                             elif diffDistance>=300:
                                 speed = 0
+                                VN.lidar_obstacle.set()
                                 print("obstacle detected")
-						
+
                         cmd_mv = (50 + speed) | 0x80
-                        print(cmd_mv)
+                        #print(cmd_mv)
                         # Correction Angle
                         errorAngle = bestAngle - 180
                         corrAngle = int((errorAngle*15) / 9) #erreur*  * K (ici 50/20 pour un calcul rapide et peu complexe (adaptation à l'attendu commande))
@@ -120,7 +122,7 @@ class Lidar_thread(Thread):
                         cmd_turn = (50 - corrAngle)| 0x80
                         msg = can.Message(arbitration_id=MCM,data=[cmd_mv, cmd_mv, cmd_turn, 0, 0, 0, 0, 0], extended_id = False)
                         self.bus.send(msg)
-                        
+
                         #memorisation de la distance moyenne precedente
                         oldDistance = bestDistance
                         init = 1
@@ -145,6 +147,6 @@ class commande_LIDAR(Thread):
                 #Commande des roues
                 #il faut ajouter des sémaphores pour avoir l'exclusion mutuelle au CAN entre l'IHM et COMMANDE_LIDAR
                 cmd_mv = (50 + speed) | 0x80
-                print(cmd_mv)
+                #print(cmd_mv)
                 msg = can.Message(arbitration_id=MCM,data=[cmd_mv, cmd_mv, 0, 0, 0, 0, 0, 0], extended_id = False)
                 self.bus.send(msg)
