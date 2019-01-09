@@ -68,7 +68,7 @@ class MySend(Thread):
 
     def run(self):
         while True :
-            
+
             #send Lidar data
             if VN.DistLidarSem.acquire(False): #acquire semaphore without blocking
                 #print(self.getName(), 'access DistLidar')
@@ -78,12 +78,12 @@ class MySend(Thread):
                 VN.DistLidarSem.release()
             else:
                 print(self.getName(), 'can not access DistLidar')
-            
+
             msg = self.bus.recv()
 
             #print(msg.arbitration_id, msg.data)
             #st = ""
-            
+
             if msg.arbitration_id == US1:
                 # ultrason avant gauche
                 distance = int.from_bytes(msg.data[0:2], byteorder='big')
@@ -177,6 +177,7 @@ class MyReceive(Thread):
         self.speed_cmd = 0
         self.move = 0
         self.turn = 0
+        self.cmd_ste = 50
         self.enable = 0
 
         while True :
@@ -185,35 +186,42 @@ class MyReceive(Thread):
             data = data[2:len(data)-1]
 
             if not data: break
-            
-            #split each command received if there are more of 1 
+
+            #split each command received if there are more of 1
             for cmd in data.split(';'):
                 print('val cmd : ',cmd)
-                
+
                 # don't try an empty command
-                if not cmd: continue 
-                
+                if not cmd: continue
+
                 #split the dealed command in header and payload (command = 'header:payload;')
                 header, payload = cmd.split(':')
                 print("header :", header, " payload:", payload)
-                
+
                 #Deal with the command
                 if (header == 'SPE'):  # speed
                     self.speed_cmd = int(payload)
                     print("speed is updated to ", self.speed_cmd)
                 elif (header == 'STE'):  # steering
                     if (payload == 'left'):
-                        self.turn = -1
+                        self.turn = 1
+                        self.cmd_ste = 95
                         self.enable = 1
                         print("send cmd turn left")
                     elif (payload == 'right'):
                         self.turn = 1
+                        self.cmd_ste = 5
                         self.enable = 1
                         print("send cmd turn right")
                     elif (payload == 'stop'):
                         self.turn = 0
                         self.enable = 1
                         print("send cmd stop to turn")
+                    elif (payload == 'str'):
+                        self.turn = 1
+                        self.cmd_ste = 50
+                        self.enable = 1
+                        print("send cmd turn straight")
                 elif (header == 'MOV'):  # move
                     if (payload == 'stop'):
                         self.move = 0
@@ -231,7 +239,7 @@ class MyReceive(Thread):
                     if (payload == 'yes'):
                         print("starting platooning mode")
                         VN.PlatooningActive.set() #start regul
-                        self.enable = 0        
+                        self.enable = 0
 					    #newthreadplat.join()
                     if (payload == 'off'):
                         print("stopping platooning mode")
@@ -250,16 +258,12 @@ class MyReceive(Thread):
                     else:
                         cmd_mv = (50 + self.move*self.speed_cmd) | 0x80
                     #Steering Command
-                    if self.turn == 0:
-                        cmd_turn = 50
+                    if self.turn == 1:
+                        cmd_turn |= 0x80
                         #cmd_turn = 50 +self.turn*20 & 0x80
                     else:
-                        if self.turn == 1:
-                            cmd_turn = 100
-                        else:
-                            cmd_turn = 0
-                        cmd_turn |= 0x80
-                        #cmd_turn = 50 + self.turn*20 | 0x80
+                        cmd_turn = 0
+                    #cmd_turn = 50 + self.turn*20 | 0x80
                     #Recap
                     print("mv:",cmd_mv,"turn:",cmd_turn)
                     #Create message
