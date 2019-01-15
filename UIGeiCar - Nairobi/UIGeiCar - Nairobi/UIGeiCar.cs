@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using System.Net.Sockets;
 
 namespace UIGeiCar___Nairobi
@@ -52,6 +53,7 @@ namespace UIGeiCar___Nairobi
             bright.Enabled = true;
             SpdBar.Enabled = true;
             bleft.Enabled = true;
+            bstraight.Enabled = true;
             bbackward.Enabled = true;
             bstopMOV.Enabled = true;
             bstopSTE.Enabled = true;
@@ -63,6 +65,7 @@ namespace UIGeiCar___Nairobi
             bright.Enabled = false;
             SpdBar.Enabled = false;
             bleft.Enabled = false;
+            bstraight.Enabled = false;
             bbackward.Enabled = false;
             bstopMOV.Enabled = false;
             bstopSTE.Enabled = false;
@@ -85,7 +88,7 @@ namespace UIGeiCar___Nairobi
                         String[] elt = msg.Split(':');
                         switch (elt[0])
                         {
-                            /*case "UFL":
+                            case "UFL":
                                 eUSFL.Text = elt[1];
                                 break;
                             case "UFC":
@@ -114,7 +117,7 @@ namespace UIGeiCar___Nairobi
                                 break;
                             case "SWR":
                                 eSPR.Text = elt[1];
-                                break;*/
+                                break;
                             case "YAW":
                                 eYAW.Text = elt[1];
                                 break;
@@ -251,44 +254,55 @@ namespace UIGeiCar___Nairobi
         private void UIGeiCar_KeyDown(object sender, KeyEventArgs e)
         {
             byte[] bytes = Encoding.ASCII.GetBytes("STE:" + "stop;");
-            if (bConnected)
+            Console.WriteLine("Key Pressed");
+            if (!ip.Focused)
             {
-                switch (e.KeyCode)
+                if ((e.KeyCode != Keys.Enter) && (e.KeyCode != Keys.Tab))
                 {
-                    case Keys.Down:
-                        bytes = Encoding.ASCII.GetBytes("MOV:" + "backward;");
-                        break;
-                    case Keys.Up:
-                        bytes = Encoding.ASCII.GetBytes("MOV:" + "forward;");
-                        break;
-                    case Keys.Left:
-                        bytes = Encoding.ASCII.GetBytes("STE:" + "left;");
-                        break;
-                    case Keys.Right:
-                        bytes = Encoding.ASCII.GetBytes("STE:" + "right;");
-                        break;
+                    if (bConnected)
+                    {
+                        kbCtrl.Focus();
+                        switch (e.KeyCode)
+                        {
+                            case Keys.Down:
+                                bytes = Encoding.ASCII.GetBytes("MOV:" + "backward;");
+                                break;
+                            case Keys.Up:
+                                bytes = Encoding.ASCII.GetBytes("MOV:" + "forward;");
+                                break;
+                            case Keys.Left:
+                                bytes = Encoding.ASCII.GetBytes("STE:" + "left;");
+                                break;
+                            case Keys.Right:
+                                bytes = Encoding.ASCII.GetBytes("STE:" + "right;");
+                                break;
+                        }
+                        Console.WriteLine("String sent : %s", bytes);
+                        nwStream.Write(bytes, 0, bytes.Length);
+                    }
                 }
-                nwStream.Write(bytes, 0, bytes.Length);
             }
         }
 
         private void UIGeiCar_KeyUp(object sender, KeyEventArgs e)
         {
             byte[] bytes = Encoding.ASCII.GetBytes("STE:" + "stop;");
-            if (bConnected)
-            {
-                switch (e.KeyCode)
+            if (kbCtrl.Focused) {
+                if (bConnected)
                 {
-                    case Keys.Down:
-                    case Keys.Up:
-                        bytes = Encoding.ASCII.GetBytes("MOV:" + "stop;");
-                        break;
-                    case Keys.Left:
-                    case Keys.Right:
-                        bytes = Encoding.ASCII.GetBytes("STE:" + "stop;");
-                        break;
+                    switch (e.KeyCode)
+                    {
+                        case Keys.Down:
+                        case Keys.Up:
+                            bytes = Encoding.ASCII.GetBytes("MOV:" + "stop;");
+                            break;
+                        case Keys.Left:
+                        case Keys.Right:
+                            bytes = Encoding.ASCII.GetBytes("STE:" + "stop;");
+                            break;
+                    }
+                    nwStream.Write(bytes, 0, bytes.Length);
                 }
-                nwStream.Write(bytes, 0, bytes.Length);
             }
         }
 
@@ -307,24 +321,28 @@ namespace UIGeiCar___Nairobi
         private void KbCtrl_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             byte[] bytes = Encoding.ASCII.GetBytes("STE:" + "stop;");
-            if (bConnected)
+            if (!ip.Focused)
             {
-                switch (e.KeyCode)
+                kbCtrl.Focus();
+                if (bConnected)
                 {
-                    case Keys.Down:
-                        bytes = Encoding.ASCII.GetBytes("MOV:" + "backward;");
-                        break;
-                    case Keys.Up:
-                        bytes = Encoding.ASCII.GetBytes("MOV:" + "forward;");
-                        break;
-                    case Keys.Left:
-                        bytes = Encoding.ASCII.GetBytes("STE:" + "left;");
-                        break;
-                    case Keys.Right:
-                        bytes = Encoding.ASCII.GetBytes("STE:" + "right;");
-                        break;
+                    switch (e.KeyCode)
+                    {
+                        case Keys.Down:
+                            bytes = Encoding.ASCII.GetBytes("MOV:" + "backward;");
+                            break;
+                        case Keys.Up:
+                            bytes = Encoding.ASCII.GetBytes("MOV:" + "forward;");
+                            break;
+                        case Keys.Left:
+                            bytes = Encoding.ASCII.GetBytes("STE:" + "left;");
+                            break;
+                        case Keys.Right:
+                            bytes = Encoding.ASCII.GetBytes("STE:" + "right;");
+                            break;
+                    }
+                    nwStream.Write(bytes, 0, bytes.Length);
                 }
-                nwStream.Write(bytes, 0, bytes.Length);
             }
         }
 
@@ -445,6 +463,23 @@ namespace UIGeiCar___Nairobi
             nwStream.Write(bytes, 0, bytes.Length);
             platooning_mode = false;
             waiting_mode = false;
+        }
+
+        private void Bstraight_Click(object sender, EventArgs e)
+        {
+            if (bConnected)
+            {
+                byte[] bytes = Encoding.ASCII.GetBytes("STE:" + "str;");
+                nwStream.Write(bytes, 0, bytes.Length);
+            }
+        }
+
+        private void UIGeiCar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar != '.') && ((e.KeyChar < '0') || (e.KeyChar > '9')))
+            {
+                kbCtrl.Focus();
+            }
         }
     }
 }
