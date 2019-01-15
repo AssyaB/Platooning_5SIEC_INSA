@@ -52,10 +52,10 @@ class MyReceivePlat(Thread):
                 cmd_turn = 50
             else:
                 cmd_turn |= 0x80
-            speed_rpm = 0.01*((VN.speed_left+VN.speed_right)/2)
-            speed = speed_rpm*(2*pi*0.095)/60
+            speed_rpm = 0.01*((VN.speed_left+VN.speed_right)/2.)
+            speed = speed_rpm*(2.*pi*0.095)/60.
             if(speed >= 0.05):
-                VN.temps_depl =int( (((VN.DistLidar- 1000)*0.001) / speed))
+                VN.temps_depl =int( (((VN.DistLidar)*0.001) / speed))
                 print(self.getName(), ': temps calculé ', VN.temps_depl, ' (', speed, ')')
             #envoi commande
                 time.sleep(VN.temps_depl)

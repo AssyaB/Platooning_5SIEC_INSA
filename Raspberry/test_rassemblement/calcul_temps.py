@@ -32,14 +32,14 @@ class calcul_temps(Thread):
     def run(self):
        print(self.getName(), 'will work now')
        while(True):
-          speed_rpm = 0.01*((VN.speed_left+VN.speed_right)/2)
+          speed_rpm = 0.01*((VN.speed_left+VN.speed_right)/2.)
           speed = speed_rpm*(2*pi*0.095)/60
-          print(VN.speed_left, ' - ', VN.speed_right, ' - ', speed_rpm, ' - ', speed)
-          if(speed == 0):
-              print(self.getName(), "t'es à l'arrêt abruti")
-          else:
-              VN.temps_depl =int( (((VN.DistLidar- 1000)*1000) / speed))
+          print(self.getName(), VN.speed_left, ' - ', VN.speed_right, ' - ', speed_rpm, ' - ', speed)
+          if(speed >= 0.05):
+              VN.temps_depl =int( (((VN.DistLidar)*1000.) / speed))
               print(self.getName(), ': temps calculé ', VN.temps_depl)
+          else:
+              #print(self.getName(), "t'es à l'arrêt abruti")
           
 
 

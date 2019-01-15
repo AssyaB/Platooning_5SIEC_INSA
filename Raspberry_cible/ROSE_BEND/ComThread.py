@@ -67,7 +67,7 @@ class MySend(Thread):
         print(self.getName(), 'initialized')
 
     def run(self):
-        while True :
+        while !VN.stop_all.is_set() :
             
             msg = self.bus.recv()
 
@@ -170,7 +170,7 @@ class MyReceive(Thread):
         cmd_turn = 0
         self.enable = 0
 
-        while True :
+        while !VN.stop_all.is_set() :
             data = self.conn.recv(1024)
             data = str(data)
             data = data[2:len(data)-1]
@@ -179,19 +179,19 @@ class MyReceive(Thread):
             
             #split each command received if there are more of 1 
             for cmd in data.split(';'):
-                print('val cmd : ',cmd)
+                print(self.getName(), 'val cmd : ',cmd)
                 
                 # don't try an empty command
                 if not cmd: continue 
                 
                 #split the dealed command in header and payload (command = 'header:payload;')
                 header, payload = cmd.split(':')
-                print("header :", header, " payload:", payload)
+                print(self.getName(), "header :", header, " payload:", payload)
 
                 #Deal with the command
                 if (header == 'SPE'):  # speed
                     self.speed_cmd = int(payload)
-                    print("speed is updated to ", self.speed_cmd)
+                    print(self.getName(), "speed is updated to ", self.speed_cmd)
                 elif (header == 'STE'):  # steering
                     if (payload == 'left'):
                         self.turn = 1
@@ -203,7 +203,7 @@ class MyReceive(Thread):
                             VN.semaphore_TURN.release()
                         else:
                             print(selft.getName(), 'no access to COM_TURN')
-                        print("send cmd turn left")
+                        print(self.getName(), "send cmd turn left")
                     elif (payload == 'right'):
                         self.turn = 1
                         cmd_turn = 5
@@ -214,7 +214,7 @@ class MyReceive(Thread):
                             VN.semaphore_TURN.release()
                         else:
                             print(self.getName(), 'no access to COM_TURN')
-                        print("send cmd turn right")
+                        print(self.getName(), "send cmd turn right")
                     elif (payload == 'str'):
                         self.turn = 1
                         cmd_turn = 50
@@ -225,7 +225,7 @@ class MyReceive(Thread):
                             VN.semaphore_TURN.release()
                         else:
                             print(self.getName(), 'no access to COM_TURN')
-                        print("send cmd turn straight")
+                        print(self.getName(), "send cmd turn straight")
                     elif (payload == 'stop'):
                         self.turn = 0
                         self.enable = 1
@@ -235,34 +235,29 @@ class MyReceive(Thread):
                             VN.semaphore_TURN.release()
                         else:
                             print(self.getName(),'no access to COM_TURN')
-                        print("send cmd stop to turn")
+                        print(self.getName(), "send cmd stop to turn")
                 elif (header == 'MOV'):  # move
                     if (payload == 'stop'):
                         self.move = 0
                         self.enable = 1
-                        print("send cmd move stop")
+                        print(self.getName(), "send cmd move stop")
                     elif (payload == 'forward'):
-                        print("send cmd move forward")
+                        print(self.getName(), "send cmd move forward")
                         self.move = 1
                         self.enable = 1
                     elif (payload == 'backward'):
-                        print("send cmd move backward")
+                        print(self.getName(), "send cmd move backward")
                         self.move = -1
                         self.enable = 1
                 elif (header == 'PLA'):
                     if (payload == 'yes'):
-                        print("starting platooning mode")
+                        print(self.getName(), "starting platooning mode")
                         VN.PlatooningActive.set() #start regul
                         self.enable = 0        
                         #newthreadplat.join()
                     if (payload == 'off'):
-                        print("stopping platooning mode")
+                        print(self.getName(), "stopping platooning mode")
                         VN.PlatooningActive.clear() #stop regul
-
-                print(self.speed_cmd)
-                print(self.move)
-                print(self.turn)
-                print(self.enable)
 
                 #edition des commandes de mouvement si enabled
                 if self.enable:
@@ -277,7 +272,7 @@ class MyReceive(Thread):
                     else:
                         cmd_turn |= 0x80
                     #Recap
-                    print("mv:",cmd_mv,"turn:",cmd_turn)
+                    print(self.getName(), "mv:",cmd_mv,"turn:",cmd_turn)
                     #Create message
                     msg = can.Message(arbitration_id=MCM,data=[cmd_mv, cmd_mv, cmd_turn, 0, 0, 0, 0, 0], extended_id=False)
                     print(msg)

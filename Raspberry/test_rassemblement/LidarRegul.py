@@ -93,8 +93,8 @@ class Lidar_thread(Thread):
                         print(self.getName(), ': can not access DistLidar')
                     if VN.PlatooningActive.is_set():
                         # Correction Vitesse
-                        if bestDistance > 4000:
-                            if oldGoodValue < 3000:
+                        if bestDistance > 2000:
+                            if oldGoodValue < 1600:
                                 temp = bestDistance
                                 bestDistance = oldGoodValue
                                 oldGoodValue = temp
@@ -102,7 +102,7 @@ class Lidar_thread(Thread):
                                 oldGoodValue = bestDistance
                         else:
                             oldGoodvalue = bestDistance
-                        errorDistance = bestDistance - 2000
+                        errorDistance = bestDistance - 1600
                         speed = (errorDistance * Kp)
                         speed = int(speed)
                         if speed<=0:
@@ -112,14 +112,14 @@ class Lidar_thread(Thread):
                         #Gestion d'anomalies et d'obstacles a� partir du 2eme tour du lidar
                         if init == 1:
                             diffDistance= oldDistance - bestDistance
-                            if bestDistance>=3000:
+                            if bestDistance>=1600:
                                 speed = 0
-                                print("vehicle loss")
+                                print(self.getName(), "vehicle loss")
                                 VN.lidar_loss.set()
-                            elif diffDistance>=300:
+                            elif diffDistance>=150:
                                 speed = 0
                                 VN.lidar_obstacle.set()
-                                print("obstacle detected")
+                                print(self.getName(), "obstacle detected")
 
                         cmd_mv = (50 + speed) | 0x80
                         #print(cmd_mv)

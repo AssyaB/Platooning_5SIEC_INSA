@@ -20,7 +20,7 @@ class mysend_COM(Thread):
         self.sock = splat
         
     def run(self):
-        while True :
+        while !VN.stop_all.is_set() :
             VN.semaphore_TURN.acquire()
             if (VN.COM_TURN!='ouep'):
                 self.sock.send(VN.COM_TURN.encode())
