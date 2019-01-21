@@ -116,14 +116,14 @@ class regul_thread(Thread):
         Thread.__init__(self)
         self.bus = bus
         self.speed = 0
-        self.Treduced = 0
+        self.stopping = 0
+        self.reducing = 0
         self.timestop = Timer(5., self.stopCar)
         self.timered = Timer(.5, self.reduce_speed)
         print(self.getName(), 'initialized')
     
     def reduce_speed(self):
         if self.speed > 0 :
-            self.Treduced = 1
             self.speed = self.speed - 1
             self.timered = Timer(.5, self.reduce_speed)
             self.timered.start()
@@ -176,13 +176,17 @@ class regul_thread(Thread):
                         if bestDistance>=2600:
                             if self.speed >=10:
                                 self.speed = 10
-                                self.timestop = Timer(5., self.stopCar)
-                                self.timestop.start()
+                                if self.stopping == 0:
+                                    self.timestop = Timer(5., self.stopCar)
+                                    self.timestop.start()
+                                    self.stopping = 1
                             else:
                                 self.speed = 0
-                                self.timered = Timer(5., self.reduce_speed)
-                                self.timestop.cancel()
-                                self.timered.start()
+                                if self.reducing == 0:
+                                    self.timered = Timer(5., self.reduce_speed)
+                                    self.timestop.cancel()
+                                    self.timered.start()
+                                    self.reducing = 1
                             print(self.getName(), "vehicle loss")
                             VN.lidar_loss.set()
                             leaving = 1
@@ -213,4 +217,6 @@ class regul_thread(Thread):
                     VN.Lidar_init = 1
             else:
                 leaving = 0
+                self.reducing = 0
+                self.stopping = 0
 
